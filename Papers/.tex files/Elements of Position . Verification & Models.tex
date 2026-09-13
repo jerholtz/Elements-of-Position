@@ -1,0 +1,195 @@
+\documentclass[10pt,a4paper]{article}
+
+\usepackage[margin=1.05in]{geometry}
+\usepackage{setspace}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{caption}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage[expansion=false]{microtype}
+\usepackage{seqsplit}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+
+\hypersetup{colorlinks=true,linkcolor=black,urlcolor=black,citecolor=black}
+\captionsetup{font=small,labelfont=bf,skip=4pt,justification=raggedright}
+
+\titleformat{\section}{\normalsize\bfseries}{}{0em}{}
+\titleformat{\subsection}{\small\bfseries}{}{0em}{}
+\titlespacing*{\section}{0pt}{1.35em}{0.5em}
+\titlespacing*{\subsection}{0pt}{0.95em}{0.35em}
+
+\setstretch{1.14}
+\setlist[itemize]{leftmargin=1.15em,itemsep=0.1em,topsep=0.2em}
+\setlength{\parindent}{1.2em}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\itshape Elements of Position}
+\fancyhead[R]{\small\itshape Companion: Verification and Models}
+\fancyfoot[C]{\small\thepage}
+\renewcommand{\headrulewidth}{0pt}
+
+\newcommand{\code}[1]{\texttt{#1}}
+
+\begin{document}
+
+\begin{center}
+\vspace*{1.0em}
+{\large Elements of Position}\\[1.0em]
+{\LARGE\bfseries Companion: Verification and Models}\\[1.4em]
+{\normalsize Justin Erholtz}\\[0.3em]
+{\small 13 September 2026}
+\end{center}
+
+\vspace{1.2em}
+
+\noindent
+\textit{A note.}
+This is not a numbered part of the series. It is documentation: a
+description of the code that verifies claims made in Papers I--III at a
+depth their own printed tables cannot show, and that gives concrete visual
+form to the plan/section/elevation reading Paper IV names but does not
+itself draw. Nothing here is a philosophical argument, and nothing here
+extends the series' claims. Where this companion's tooling turned up
+structure unrelated to anything the papers argue, that material is
+deliberately not included here; it is held in a separate, clearly labeled
+exploratory record.
+
+\vspace{0.8em}
+
+\section{Why this exists}
+
+Papers I through III make claims that hold at every finished $n$: the
+geometric mean locks at $1$, the marriage of Process A and Process B is
+exact only at $n=5$, the Fibonacci docking error shrinks as the count
+runs. Each paper demonstrates this with a printed table running to
+$n=16$ --- a table can't run further and still be read. That is a real
+limitation, not a rhetorical one: ``one run is every run'' (Paper III)
+is a claim about all $n$, and sixteen rows support it by example, not
+by exhaustion.
+
+This companion exists to close that gap: two scripts that carry every
+claim out to a depth no page could hold, self-test the results on every
+execution, and give a live, orbitable model of the two-process geometry
+Paper III describes only in prose and static figures.
+
+\section{What is included, and what is deliberately not}
+
+Two scripts, described in \S3--\S4. Both are built on formulas ported
+verbatim from \texttt{\seqsplit{Elements\_of\_Position\_-\_Drawings.py}},
+the script every paper already cites --- this companion is a second
+reading of the same geometry, not a second geometry.
+
+During the construction of these tools, several structures were found
+that are true, checkable, and unrelated to anything the papers claim ---
+among them a connection between the vertex structure explored in Model~2
+and Euler's totient function, and a further connection to cyclotomic
+polynomials. Those findings are real and documented, but held in a
+separate exploratory record: they support nothing written in Papers I--V.
+Keeping that boundary explicit is itself part of the discipline the
+papers ask of themselves.
+
+\section{Verification.py --- Papers I, II, III}
+
+Ports \code{row\_for\_n}, \code{count\_process}, and \code{phi\_process}
+directly from the drawings script, then runs the master sequence to
+$n=10{,}000$ by default (configurable), producing:
+
+\begin{itemize}
+\item \textbf{\code{measurements.csv}} --- one row per $n$: product,
+geometric mean, arithmetic mean, cross-ratio $-n$, half-walk $n\pi/2$,
+chord, apothem, and \code{marriage\_gap} $= 2\cos(\pi/n) - \varphi$
+(Paper III's closing lemma, generalized across the full range).
+\item \textbf{\code{docking\_events.csv}} --- the Fibonacci docking table
+from Paper III, Proposition 1, computed two ways per row: the paper's own
+formula ($\tfrac12|F_k\Phi - F_{k-1}|$) and a closed form derived here via
+Binet's identity, $\Phi^{k+2}/2$, confirmed to agree to 44+ decimal
+digits under arbitrary-precision arithmetic. The paper's formula
+subtracts two large, nearly equal numbers --- ordinary floating-point
+cancellation, visible directly in the \code{cancellation\_error} column,
+growing from $\sim 10^{-17}$ at $k=1$ to $\sim 10^{-13}$ by $k=18$. The
+closed form has no such term and is used as the reported value.
+\item \textbf{\code{live\_model.html}} --- Process A and Process B in one
+orbitable 3D scene, with a configurable arrival point for B, Fibonacci
+dockings marked, and the $n=5$ marriage called out directly.
+\end{itemize}
+
+\begin{table}[h]
+\centering
+\small
+\begin{tabular}{@{}rrr@{}}
+\toprule
+$k$ & $F_k$ & docking error \\
+\midrule
+1 & 2 & 0.118034 \\
+5 & 13 & 0.017221 \\
+10 & 144 & 0.001553 \\
+15 & 1597 & 0.000140 \\
+18 & 6765 & 0.000033 \\
+\bottomrule
+\end{tabular}
+\caption{A sample of the docking table at $n=10{,}000$ depth. Full table
+in \code{docking\_events.csv}.}
+\end{table}
+
+Self-test on every run: \code{docking\_error == Phi**(k+2)/2} across all
+rows in range, to within $10^{-12}$.
+
+\section{Local Circle Models.py --- Papers I, III, IV}
+
+Three models, matching Paper IV's own division of one object into plan,
+section, and elevation:
+
+\begin{description}[leftmargin=1.3em]
+\item[Model 1 --- local circle.] One $n$-gon at a time, built raw from
+the master sequence: radius $n/2$, chord $n\sin(\pi/n)$, apothem
+$(n/2)\cos(\pi/n)$, central angle $2\pi/n$, and the isosceles spoke
+triangle's base angles. This is Paper III's worked $n=5$ example (radius
+$2.5$, central angle $72^\circ$, base angles $54^\circ$ --- reproduced
+exactly by this script) generalized to any finished $n$.
+\item[Model 2 --- plan overlay.] Every local circle from Model 1,
+overlaid concentrically at one center --- the flat nesting Paper III
+describes when it says scale does not matter.
+\item[Model 3 --- elevation stack.] The same $n$-gons, stacked by height
+$n/2$ instead of flattened to one plane. This height is not an arbitrary
+choice: Paper I's own cone construction already lifts the own-origin to
+height $n/2$, forming the $45$--$45$--$90$ triangle with vertices
+$(0,0)$, $(n,0)$, $(n/2,n/2)$. The vertex line running straight down the
+elevation stack at $\theta=0$ \emph{is} that triangle's hypotenuse,
+already proved in Paper I. The section cut at the mid-edge angle traces
+the apothem, $(n/2)\cos(\pi/n)$, which converges onto that same line as
+$n$ grows --- a picture of the Archimedes inequality
+$n\sin(\pi/n) < \pi < n\tan(\pi/n)$ that Paper I cites in its literature
+review but does not itself draw.
+\end{description}
+
+Self-tests on every run: the relative gap $1 - (\text{apothem}/\text{radius})$
+matches $\pi^2/(2n^2)$ to within 1\% for $n \geq 500$; the inscribed and
+circumscribed Archimedes bounds hold on every side, for every $n$, with
+no exceptions.
+
+\section{Reproducing this companion}
+
+\begin{verbatim}
+python "Elements of Position - Verification.py" --nmax 10000
+python "Elements of Position - Local Circle Models.py" --nmax 1000
+\end{verbatim}
+
+Both scripts print a \texttt{self-test:} block on completion. A run that
+does not print all \texttt{PASS} lines should not be trusted, and neither
+should any figure produced by it.
+
+\section{Scope}
+
+This companion verifies. It does not extend. Nothing here should be read
+as a sixth part of the series, and nothing here bears on Paper IV's
+analytic material (the derived-unit, vacuum/trace, and midline
+discussion) --- that content is explicitly a naming choice within the
+paper itself, not a numerical claim, and no tool in this companion
+touches it either way.
+
+\end{document}

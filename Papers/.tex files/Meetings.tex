@@ -1,0 +1,351 @@
+\documentclass[10pt,a4paper]{article}
+
+\usepackage[margin=1.05in]{geometry}
+\usepackage{setspace}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx}
+\usepackage{array}
+\usepackage{caption}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{microtype}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+
+\hypersetup{colorlinks=true,linkcolor=black,urlcolor=black,citecolor=black}
+\captionsetup{font=small,labelfont=bf,skip=4pt,justification=raggedright}
+
+\titleformat{\section}{\normalsize\bfseries}{}{0em}{}
+\titleformat{\subsection}{\small\bfseries}{}{0em}{}
+\titleformat{\subsubsection}{\small\itshape}{}{0em}{}
+\titlespacing*{\section}{0pt}{1.35em}{0.5em}
+\titlespacing*{\subsection}{0pt}{0.95em}{0.35em}
+
+\theoremstyle{plain}
+\newtheorem{proposition}{Proposition}
+\newtheorem{lemma}{Lemma}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+
+\setstretch{1.14}
+\setlist[itemize]{leftmargin=1.15em,itemsep=0.1em,topsep=0.2em}
+
+\graphicspath{{drawings/}}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\itshape Elements of Position}
+\fancyhead[R]{\small\itshape III.\ Meetings}
+\fancyfoot[C]{\small\thepage}
+\renewcommand{\headrulewidth}{0pt}
+
+\begin{document}
+
+\begin{center}
+\vspace*{2.2em}
+{\large Elements of Position}\\[1.6em]
+{\LARGE\bfseries III.\ Meetings}\\[2.2em]
+{\normalsize Justin Erholtz}\\[0.35em]
+{\small 12 September 2026}
+\end{center}
+
+\vspace{2.4em}
+
+\begin{center}
+{\large A's spokes meet B's ratio.}
+\end{center}
+
+\vspace{1.8em}
+
+\noindent
+Two independent static interiors, overlapped and then walked, are a system.
+The system is measured from one reference that does not move: the $1/2$ line.
+
+Part~I built the unit and the $n$-count.
+Part~II laid a second process on that count, walked the other way after arrival.
+This part asks what happens when those two processes occupy the same drawing.
+
+A freeze is a section, and the rate-$1$ walk makes those sections a system.
+The dynamics are not new objects --- they are marks already forced, moving relative to one another while the midline stays.
+
+The first exact marriage is $n=5$: A's own split at five \emph{is} B's ratio.
+That identity does not spread to a generic later integer.
+Fibonacci docking is a different kind of meeting: approximate, after arrival, shrinking as the $n$-count runs.
+
+\vspace{1.4em}
+
+\noindent
+\textit{A note.}
+This part cites I and II and stays inside the same questions.
+Claims that can be proved here are proved by school geometry.
+The drawings are layers on the same architectural set, built by \texttt{Elements of Position - Drawings.py}.
+
+\vspace{0.9em}
+\noindent
+\textit{A note on names used here.}
+Names from I and II stand.
+Meeting --- a finished comparison of a mark of A with a mark of B.
+Marriage --- an exact meeting, forced by the integers already on the table, not an approximation.
+Docking --- a meeting of walks whose error is determined by two arrived integers and shrinks as those integers grow.
+
+\newpage
+\tableofcontents
+\newpage
+
+% =====================================================================
+\section{The common object is the line}
+% =====================================================================
+
+The common object is not a circle.
+It is the $1/2$ line.
+
+Every local diameter is cut at its midpoint.
+Process A's even split lives there.
+Process B's pair $\Phi$ and $\Phi^{2}$ lives equally far from it.
+The cone of A, if the axis is the $n$-count, has slope $1/2$.
+Three facts, one ratio.
+
+Freeze $n$: an $n$-gon, a half-walk, a $\Phi$ mark, an inward copy of radius $(n/2)\Phi$.
+All of that is a section.
+Start the count and the same marks ride A outward and, after arrival, walk B the other way.
+
+A winds $+2\pi$ per integer; B winds $-2\pi$ per opposite turn after arrival.
+Same clock, opposite hands.
+At the arrival circle they occupy the same ring and then leave it in opposite angular senses.
+
+They do not have the same length.
+If height is walked arc, A from the paper to a finished $N$ climbs $\pi(N^{2}-1)/2$.
+B, collapsing at scale $\Phi$ per opposite turn, is bounded by a multiple of $N$.
+A grows radius linearly in $n$, so arc piles up quadratically, while B shrinks radius geometrically.
+That mismatch is not a drawing error.
+It is two processes on one clock.
+
+If the axis is the count $n$, A is the cone $r=n/2$.
+B from arrival is $r(n)=(N/2)\Phi^{N-n}$, which is not on that cone.
+Same integers, two surfaces.
+
+\begin{proposition}
+From a Fibonacci arrival $N=F_k$ already on the table, one opposite turn of B has radius $F_k/(2\varphi)$.
+A's freeze at $F_{k-1}$ has radius $F_{k-1}/2$.
+The difference is $\tfrac12|F_k\Phi-F_{k-1}|$, which is already determined by those two integers.
+\end{proposition}
+
+\begin{proof}
+B's first step from $N$ is radius $(N/2)\Phi$.
+Substitute $N=F_k$, and compare to the freeze of A at the previous Fibonacci integer already arrived.
+\end{proof}
+
+At $N=13$ the miss in radius is about $0.017$; at $N=233$ it is about $0.00096$.
+You cannot walk B until you arrive.
+When the arrival is a Fibonacci integer already produced by the $n$-count, the first opposite step almost lands on the previous Fibonacci freeze of A.
+No extra sequence was imported.
+
+Depth to shrink from diameter $N$ to the paper diameter is $\log_\varphi N$, which is not an integer.
+The paper is always a non-integer number of $\Phi$-turns below arrival.
+One closes; the cut between $0$ and $1$ does not.
+
+Irreducible interiors do not give B a special radius.
+Primality is a fact about A's grammar, and the midline does not care.
+The gap from the even cut to the $\Phi$ cut is $n(\Phi-1/2)$ on every diameter: a growing room, same shape.
+
+The system does not surprise itself.
+Run $50$ or run $233$ and the same docking error shrinks, the same length mismatch grows, the same $n=5$ identity stays exact, the same $1/2$ line does not move.
+That is what rigidity was for: one run is every run.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.95\textwidth]{layer_both_01_paper.png}
+\caption{Both processes on the paper circle.
+A freeze is a section of a live pair.}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.78\textwidth]{layer_both_03_plan.png}
+\caption{Plan.
+A out with the $n$-count.
+B the other way from arrival.}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.95\textwidth]{layer_both_04_obliques.png}
+\caption{Obliques.
+A up.
+B down from arrival, opposite angle, scale $\Phi$.}
+\end{figure}
+
+% =====================================================================
+\section{The first exact marriage is $n=5$}
+% =====================================================================
+
+A's own split at $n=5$ is B's ratio.
+The local circle has diameter $5$, radius $R=5/2$, with five equal central angles, each $72^{\circ}$.
+That is all A contributes.
+B is the pair defined by $1/x=1+x$.
+
+\begin{proposition}
+\label{prop:five-quadratic}
+Let $\theta=72^{\circ}=2\pi/5$.
+Then $\cos72^{\circ}=\Phi/2$, and $x=2\cos72^{\circ}$ satisfies $x^{2}+x-1=0$.
+\end{proposition}
+
+\begin{proof}
+$2\theta=144^{\circ}=180^{\circ}-\theta$, so $\cos2\theta=-\cos\theta$.
+Also $\cos2\theta=2\cos^{2}\theta-1$.
+Hence $2c^{2}+c-1=0$ with $c=\cos72^{\circ}$.
+The positive root is $(-1+\sqrt5)/4=\Phi/2$.
+Set $x=2c$.
+Then $x^{2}+x-1=0$, which is $1/x=1+x$.
+\end{proof}
+
+One spoke, doubled, produces process B --- no extra map.
+
+The companion is $\cos36^{\circ}=\varphi/2$.
+A's side is the chord of one central step; A's diagonal is the chord of two:
+\[
+\frac{\mathrm{diag}}{\mathrm{side}}=\frac{\sin72^{\circ}}{\sin36^{\circ}}=2\cos36^{\circ}=\varphi.
+\]
+Every diagonal is cut by another in the ratio $\varphi:\Phi$.
+The five intersection points form a smaller regular pentagon of radius $R\Phi^{2}$ --- two inward steps of B.
+The first inward copy, radius $R\Phi$, is the step the diagonals skip.
+
+On the diameter, $\Phi$ and $\Phi^{2}$ remain symmetric about the centre.
+The vertical diagonal and the $\Phi$-mark are two different $\Phi$-rods from the same origin.
+They share the midline and they do not coincide.
+
+Five is the first odd irreducible inversion after $2$.
+It is also the first integer whose central angle, doubled, solves $x^{2}+x-1=0$.
+The first prime after the even cut, and B's defining equation, arrive together because $360/5=72$ and $2\cdot72$ is the supplement of $72$.
+
+That last sentence is a coincidence of small numbers worth marking, not a claim that every later irreducible arrival will compute B.
+At $n=10$ the $10$-gon inherits $36^{\circ}$ as a spoke.
+After that A's mesh and B's cut share only centre, diameter, and the $1/2$ line.
+The exact computation of B by A's spokes does not repeat at $7$, $8$, $13$, or $16$.
+
+Fibonacci docking was an approximate meeting of walks.
+The pentagon is an exact meeting of one freeze.
+Both are A against B around $1/2$.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.95\textwidth]{layer_n5_meetings.png}
+\caption{$n=5$.
+Left: spokes, diagonals, $\Phi$ and $\Phi^{2}$ on the diameter, half-walk.
+Right: inner pentagon at $R\Phi^{2}$ and first inward copy at $R\Phi$.}
+\end{figure}
+
+% =====================================================================
+\section{Solved triangles in the five-disk}
+% =====================================================================
+
+Every length below is a word in $R=5/2$ and $\Phi$.
+The angle alphabet of the disk is $\{18^{\circ},36^{\circ},54^{\circ},72^{\circ},90^{\circ},108^{\circ}\}$.
+Two of those are already $\Phi$:
+\[
+\sin18^{\circ}=\cos72^{\circ}=\frac\Phi2,\qquad
+\cos36^{\circ}=\sin54^{\circ}=\frac\varphi2=\frac1{2\Phi}.
+\]
+
+\paragraph{Thales.}
+Half-walk apex $A=(0,R)$, diameter ends $L=(-R,0)$ and $W=(R,0)$.
+Angle at $A$ is $90^{\circ}$ on any $n$.
+Legs $R\sqrt2$, hypotenuse $2R=5$.
+The half-walk is still only the even cut.
+It does not know $\Phi$.
+
+\paragraph{Spoke triangle $54^{\circ}$--$54^{\circ}$--$72^{\circ}$.}
+Two radii and one side.
+Drop a perpendicular from the centre to the side: two right triangles $36^{\circ}$--$54^{\circ}$--$90^{\circ}$,
+\[
+\text{apothem}=\frac R{2\Phi},\qquad
+s=2R\sin36^{\circ},\qquad
+d=s/\Phi.
+\]
+
+\paragraph{Similar family $36^{\circ}$--$72^{\circ}$--$72^{\circ}$.}
+Two diagonals and a side: $s,d,d$.
+A crossing cuts $d$ as $d\Phi=s$ and $d\Phi^{2}=s\Phi$.
+Those pieces sum to $d$ because $\Phi+\Phi^{2}=1$.
+The same identity that placed $\Phi$ and $\Phi^{2}$ on the diameter now places them on A's diagonal.
+The inner side is $s\Phi^{2}$.
+The $72^{\circ}$-chord on the first inward copy is $s\Phi$.
+
+\paragraph{Chord of $108^{\circ}$.}
+From the left end of the diameter to the first vertex,
+\[
+|LV_1|=2R\sin54^{\circ}=R/\Phi.
+\]
+
+Inventory in one disk: radius $R$; diameter $2R$; half-walk legs $R\sqrt2$; side $s$; diagonal $s/\Phi$; apothem $R/(2\Phi)$; $\Phi$-mark from centre $R(2\Phi-1)$; first inward copy $R\Phi$; inner pentagon $R\Phi^{2}$; short diagonal piece $s\Phi$; long diagonal piece $s$; chord $108^{\circ}$ equal to $R/\Phi$.
+
+Three triangle species share one freeze: the midline holds the even cut, the spokes hold the five-split, and the diagonals hold the similar nest, which is B.
+
+Scale does not matter.
+The same inventory at any similar five-disk is the same words times a ratio of parts.
+Inside a circle of diameter $10\,000$ there is a similar five-disk whose every length scales by $2000$.
+The marriage is the shape, not the size.
+
+% =====================================================================
+\section{What high $n$ does and does not do}
+% =====================================================================
+
+No limit is taken here.
+A large finished integer is only a deeper sample of the same building.
+
+What does not change: rate $1$; midline $1/2$; equal arc $\pi$; $\Phi+\Phi^{2}=1$; opposite helicity; B only after arrival; $n=5$ still computes B and no later generic $n$ joins it.
+
+The two-step chord over the one-step chord at integer $n$ is $2\cos(\pi/n)$.
+That equals $\varphi$ only when $\pi/n=36^{\circ}$, hence only at $n=5$.
+At $n=10\,000$ the same ratio is already $1.99999961$, which is not $\varphi$.
+The marriage does not spread.
+
+A's walked height grows like $N^{2}$, while B's whole opposite walk from that arrival grows like $N$.
+Raising the count pins B harder to the top of A's climb.
+Depth to the paper diameter remains $\log_\varphi N$, still not an integer.
+
+From a finished $N$, integer depths of B land at diameters $N\Phi^{d}$.
+They are not A's integer freezes except at $d=0$.
+
+High $n$ does not dissolve the meetings.
+It makes the non-meetings obvious: the exact marriage stays at five, the approximate dockings get closer, and the midline does not move.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.95\textwidth]{layer_both_02_interiors.png}
+\caption{Local interiors at a freeze.
+A's $n$-gon and half-walk against B's first inward copy and the pair $\Phi,\Phi^{2}$.}
+\end{figure}
+
+% =====================================================================
+\section{What stands}
+% =====================================================================
+
+Forced:
+the $1/2$ line as the common object of A and B;
+opposite helicity on one $n$-count;
+length mismatch of the two walks;
+docking error $\tfrac12|F_k\Phi-F_{k-1}|$ at Fibonacci arrivals already on the table;
+$\cos72^{\circ}=\Phi/2$, so $n=5$ computes B from A's spokes alone;
+diag/side $=\varphi$ in the five-disk;
+$\Phi+\Phi^{2}=1$ cutting both the diameter and the diagonal;
+the angle alphabet $\{18^{\circ},36^{\circ},54^{\circ},72^{\circ},90^{\circ},108^{\circ}\}$ as words in $\Phi$;
+$2\cos(\pi/n)=\varphi$ only at $n=5$.
+
+Named:
+meeting, marriage, docking.
+
+Not granted:
+a second primary ratio;
+an exact marriage at a generic later $n$;
+a completed Fibonacci sequence;
+a walk of B before arrival;
+a new object beyond the two processes already built.
+
+The first sentence is still the sentence.
+Where is $1$?
+At $n=5$ one answer is: on the midline, with A's spokes naming B's cut, and B's cut sitting equally far from that line as its own square.
+That is a meeting.
+It is not a new unit.
+
+\end{document}
