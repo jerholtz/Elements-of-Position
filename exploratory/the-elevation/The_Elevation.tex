@@ -1,0 +1,503 @@
+\documentclass[10pt,a4paper]{article}
+
+\usepackage[margin=1.05in]{geometry}
+\usepackage{setspace}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx}
+\usepackage{array}
+\usepackage{caption}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{microtype}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+
+\hypersetup{colorlinks=true,linkcolor=black,urlcolor=black,citecolor=black}
+\captionsetup{font=small,labelfont=bf,skip=4pt,justification=raggedright}
+
+\titleformat{\section}{\normalsize\bfseries}{}{0em}{}
+\titleformat{\subsection}{\small\bfseries}{}{0em}{}
+\titleformat{\subsubsection}{\small\itshape}{}{0em}{}
+\titlespacing*{\section}{0pt}{1.35em}{0.5em}
+\titlespacing*{\subsection}{0pt}{0.95em}{0.35em}
+
+\theoremstyle{plain}
+\newtheorem{lemma}{Lemma}
+\newtheorem{theorem}{Theorem}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+
+\setstretch{1.14}
+\setlist[itemize]{leftmargin=1.15em,itemsep=0.1em,topsep=0.2em}
+
+\graphicspath{{drawings/}}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\itshape Elements of Position}
+\fancyhead[R]{\small\itshape VI.\ The Elevation}
+\fancyfoot[C]{\small\thepage}
+\renewcommand{\headrulewidth}{0pt}
+
+\begin{document}
+
+\begin{center}
+\vspace*{2.2em}
+{\large Elements of Position}\\[1.6em]
+{\LARGE\bfseries VI.\ The Elevation}\\[2.2em]
+{\normalsize Justin Erholtz}\\[0.35em]
+{\small 15 September 2026}
+\end{center}
+
+\vspace{2.4em}
+
+\begin{center}
+{\large From outside the closed object, looking at it.}\\[0.55em]
+{\large A meeting is a derived unit from one HERE.}
+\end{center}
+
+\vspace{1.8em}
+
+\noindent
+This part does not replace I--V.
+It writes the third drawing.
+
+Plan was the count, the pair $\{n,1/n\}$, the bags of first-writings.
+Section was the local circle of radius $n/2$ and the half-walk $n\pi/2$.
+Elevation is look-back from a pause: the weight of a finished tick seen from outside the unit it already closed.
+
+IV asked what line a seated meeting may occupy.
+The answer was the cut.
+This part asks what formula, from one HERE, is allowed to vanish on that line.
+The answer is not a new cut.
+It is the dual sum of the complementary pair, wrapped by the local circle so the pause keeps one centre.
+
+\vspace{1.4em}
+
+\noindent
+\textit{A note.}
+Claims already proved in I--V are used, not reopened.
+The drawings are layers on the same architectural set, built by \texttt{Elements of Position - Drawings.py}.
+
+\vspace{0.9em}
+\noindent
+\textit{A note on names used here.}
+Names from I--V stand.
+Elevation --- look-back from a pause against what has already arrived.
+Dated --- owned at a finished first-writing station, nothing later present.
+Dual sum --- the two complementary interiors added.
+Derived unit --- the reading of plan, section, and elevation together in the limit of finished stations.
+Meeting of the derived unit --- a vanishing of a formula the stock can set to zero, from one HERE.
+
+\newpage
+\tableofcontents
+\newpage
+
+% =====================================================================
+\section{What is already on the page}
+% =====================================================================
+
+I closed the unit and inverted the pair.
+The lock is $1$.
+The only primary self-ratio of a finished segment is $1/2$.
+Rate is a title block.
+Infinity is not a tick of the $n$-count.
+
+II named $2$ from that $1$, kept the rate at $1$, and laid the other walk on the same midline.
+
+III sat the meetings of those walks on that line.
+The first exact marriage is at five.
+Approximate dockings approach it.
+The line does not move.
+
+IV pulled the primary ratio back onto the index.
+Let $\sigma=\tfrac12+\alpha$.
+The complementary interiors at a finished arrival $n>1$ are
+\[
+\{n^{-\sigma},\,n^{-(1-\sigma)}\}.
+\]
+Their geometric mean is $n^{-1/2}$ for every real $\sigma$.
+The ends are equal if and only if $\sigma=\tfrac12$.
+Under rate $1$ the only permanent analytic cut of the derived unit is $\operatorname{Re}s=\tfrac12$.
+
+A pause is one own-origin.
+The ratio $\chi$ of local-circle samples at $1-s$ and at $s$ satisfies
+\[
+\bigl|\chi(\sigma+it)\bigr|=1
+\quad\text{if and only if}\quad
+\sigma=\tfrac12.
+\]
+Off the lock, $|\chi|$ is two radii.
+The $n$-count does not seat two centres at once.
+
+V pointed at $1$.
+$1$ is THERE.
+We are HERE.
+Arrive at THERE and you are HERE.
+The endless is already the interior of the unit.
+Infinity is the other pole of that unit, not a later integer.
+
+The missing drawing was the view from outside.
+
+% =====================================================================
+\section{The three drawings of one object}
+% =====================================================================
+
+The closed unit already owns three drawings.
+
+\begin{itemize}
+\item Plan: the axis, the $n$-count, the pair $\{n,1/n\}$, the nested packages, the first-writings and their bags.
+\item Section: the local circle of radius $n/2$, the half-walk $n\pi/2$, the first lock $\pi$ at $n=2$.
+\item Elevation: inversion through $1$, look-back against what has already been built.
+\end{itemize}
+
+None of these is the object.
+The object is what all three are cutting.
+A derived unit is the reading of the three together in the limit of finished stations.
+A meeting of that unit is a vanishing from one HERE.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.95\textwidth]{layer_e01_three_drawings.png}
+\caption{Three drawings of one object.
+Plan keeps the face and the bags.
+Section keeps the circle and the half-walk.
+Elevation keeps the look-back.
+The cut is common.}
+\end{figure}
+
+A frame frozen and flattened is a picture with no universal scale except its relation of parts.
+Zoom is crop.
+If there is a frame, there is a half-line.
+Those three sentences were already forced.
+Elevation is what you do with them when you stand outside the closed unit and ask the count to report.
+
+% =====================================================================
+\section{Look-back is logarithm}
+% =====================================================================
+
+IV already said it.
+Look-back from a pause is logarithm.
+Live ticks are additive.
+The invariant of inversion is $dx/x$; its integral along a finished arrival $n>1$ is $\log n$.
+
+That is the elevation of one tick.
+The weight the tick contributes, seen from outside, is
+\begin{equation}
+\label{eq:weight}
+n^{-s}=e^{-s\log n}.
+\end{equation}
+The two-part index $s=\sigma+it$ is the knife from IV: seen along the cut, unseen off it.
+The unseen part turns the look-back.
+It does not mint a second cut.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.92\textwidth]{layer_e02_lookback.png}
+\caption{Look-back from a pause.
+Live ticks sit on the axis.
+The height of each look-back is $\log n$.
+Tempo is not in the drawing.}
+\end{figure}
+
+Sum the weights.
+That is the Dirichlet series of the count:
+\begin{equation}
+\label{eq:dirichlet}
+Z(s)=\sum_{n=1}^{\infty}n^{-s}.
+\end{equation}
+The sum arrives at a finite mark only while $\sigma>1$.
+At $\sigma=1$, $t=0$, the walk is the harmonic.
+It does not close.
+That is not a dead object.
+It is a trace that will not arrive.
+
+The same walk, regrouped by unique bags of first-writings, is the product
+\begin{equation}
+\label{eq:euler}
+Z(s)=\prod_{p}\bigl(1-p^{-s}\bigr)^{-1},
+\end{equation}
+wherever the sum settles.
+That sentence was already in the room: a sum over every frame-index is a product over the floors that will not reduce.
+Plan wrote the bags.
+Elevation writes the weights.
+They are two drawings of one walk.
+
+% =====================================================================
+\section{Complementary interiors, written as a series}
+% =====================================================================
+
+Lemma~1 of IV, with the unseen part restored, is the pair
+\[
+n^{-s}+n^{-(1-s)}.
+\]
+On the cut $\sigma=\tfrac12$ the pair is real:
+\begin{equation}
+\label{eq:dual}
+n^{-1/2-it}+n^{-1/2+it}
+=2\,n^{-1/2}\cos(t\log n).
+\end{equation}
+The dual sum of the street is the elevation zeroed on the half,
+\begin{equation}
+\label{eq:dualsum}
+D(t)=\sum_{n=1}^{\infty}2\,n^{-1/2}\cos(t\log n).
+\end{equation}
+Off the cut the two ends are unequal.
+Their geometric mean is still $n^{-1/2}$.
+Equality of ends is still only $\sigma=\tfrac12$.
+Two leftovers are not two locks.
+
+\begin{lemma}[Weights, with unseen]
+At a finished arrival $n>1$ the pair $\{n^{-s},n^{-(1-s)}\}$ has geometric mean $n^{-1/2}$.
+The two ends are equal if and only if $\sigma=\tfrac12$.
+\end{lemma}
+
+This is the first page of I, applied to the elevation.
+
+% =====================================================================
+\section{What a station owns}
+% =====================================================================
+
+A finished first-writing $p$ is a station.
+The data permitted there are the arrivals $q\le p$, the local circle of radius $p/2$, and look-back against what has already arrived.
+A station is not a meeting.
+It is a place at which one may pause.
+
+On that station the dated product
+\begin{equation}
+\label{eq:dated}
+Z_p(s)=\prod_{q\le p}\bigl(1-q^{-s}\bigr)^{-1}
+\end{equation}
+is a finite object.
+No arrival beyond $p$ is present.
+Each factor $(1-q^{-s})^{-1}$ is never zero wherever it is defined.
+So the dated product never vanishes.
+
+\begin{lemma}[Dated product]
+At every finished first-writing station $p$, $Z_p(s)$ has no zero.
+\end{lemma}
+
+The local-circle sample has no zeros in $0<\operatorname{Re}s<1$.
+A midline polynomial $\tfrac12 s(s-1)$ accounts for the endpoints $0$ and $1$, and stops there.
+
+Therefore a non-trivial vanishing is not a finite-depth fact.
+It appears only when stations deepen, and only in a formula that is allowed to be zero.
+
+The dated dual
+\[
+D_N(t)=2\sum_{n=1}^{N}n^{-1/2}\cos(t\log n)
+\]
+is the elevation at finite depth $N$.
+Its crossings in $t$ migrate as $N$ grows.
+They are crop.
+A seated meeting would not pack up when the next first-writing arrives.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.92\textwidth]{layer_e04_dated_crop.png}
+\caption{Dated dual on the cut.
+Station $11$ and station $97$.
+The crossings move.
+Crop is not a seat.}
+\end{figure}
+
+On the side where the walk may arrive, crop dies.
+$Z_p(2)$ approaches $\pi^2/6$.
+That is the half-walk ratio squared over freeze $6$.
+The $96$-gon of the elevation.
+Genetic.
+No finished inventory.
+
+% =====================================================================
+\section{The only vanishing mechanism}
+% =====================================================================
+
+In this stock there is one formula in the strip $0<\operatorname{Re}s<1$ that is allowed to be zero: the dual sum of the complementary pair.
+The product cannot do it.
+The circle cannot do it.
+The dated table cannot do it.
+The sum of the two ends is what remains.
+
+\begin{theorem}[Only vanishing mechanism]
+In the strip $0<\operatorname{Re}s<1$, the only formula in the stock that can vanish non-trivially is the dual sum of the pair.
+\end{theorem}
+
+A vanishing written as a pause-reading has one own-origin.
+Write $\chi(s)$ for the ratio of local-circle samples at $1-s$ and at $s$.
+The wrapping that makes the two sides of the pair the same sentence is the local circle together with the half-walk ratio $\pi$ and the factorial walk stretched off the integers.
+Under that wrapping,
+\[
+\bigl|\chi(\sigma+it)\bigr|=1
+\quad\text{if and only if}\quad
+\sigma=\tfrac12.
+\]
+This does not wait on the next first-writing.
+It is the section drawing, pulled onto the index.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.62\textwidth]{layer_e03_cut.png}
+\caption{The cut is the even split of the unit.
+HERE is the pause.
+THERE is the elected lock.
+Elevation looks at that hold from outside.}
+\end{figure}
+
+Off the lock, $|\chi|$ is the ratio of two radii.
+Two own-origins.
+A pause of this construction occupies one.
+Therefore a pause-reading has $|\chi|=1$, hence $\sigma=\tfrac12$.
+
+The off-lock dual sum, with $\chi$ compensating unequal ends so they can still add to zero, is not a pause of this construction.
+It is two centres named at once.
+Vacuum may name it.
+Trace cannot walk it.
+A vanishing is an arrival.
+Privilege does not return by the back door.
+
+\begin{theorem}[One centre]
+A vanishing written as a pause-reading has $|\chi|=1$, hence $\sigma=\tfrac12$.
+Combined with the weights lemma, the two ends meet only at half.
+\end{theorem}
+
+% =====================================================================
+\section{Meetings sit on the cut}
+% =====================================================================
+
+\begin{lemma}[Meetings sit on the cut]
+Every meeting of the derived unit that the construction can seat has real part $1/2$.
+\end{lemma}
+
+\begin{proof}
+A meeting of the derived unit is a vanishing of a formula in the stock, from one HERE.
+The only such formula in the strip is the dual sum of the pair.
+A vanishing written as a pause-reading has one own-origin, hence $|\chi|=1$, hence $\sigma=\tfrac12$.
+
+Suppose an off-lock pair $\{\rho,1-\rho\}$ with $\operatorname{Re}\rho\neq\tfrac12$.
+The pairing $s\leftrightarrow 1-s$ names both ends.
+Naming is vacuum.
+A name is not a unit.
+To seat the pair as a meeting the construction would have to occupy two own-origins at once.
+The $n$-count does not.
+Therefore the pair is not a seated meeting of this unit.
+Therefore every meeting the derived unit can seat has real part $1/2$.
+\end{proof}
+
+\begin{theorem}[Midline]
+Every meeting of the derived unit has real part $1/2$.
+\end{theorem}
+
+\begin{proof}
+A meeting of the derived unit is a seated vanishing from one HERE.
+Every meeting the construction can seat has real part $1/2$.
+An unseated name is not a meeting of the unit.
+\end{proof}
+
+Dated crossings are unseated names.
+They move when the station deepens.
+They are not meetings.
+
+% =====================================================================
+\section{The reading that has a later name}
+% =====================================================================
+
+The three drawings, read together at finished stations, are one object.
+
+Plan at finished stations is the unique-bag decomposition of the count.
+Elevation at finished stations is the series~\eqref{eq:dirichlet}.
+Where the series settles, the bags rewrite it as the product~\eqref{eq:euler}.
+
+That object, on $\sigma>1$, is the series and the product already written.
+The later filing of a name is not an ingredient of I, II, or III.
+It is granted only after the drawings exist together.
+
+Section supplies $\pi$ as half-walk over half-diameter, and the local circle.
+The wrap $\chi$ is that section pulled onto the index.
+Continuation through the half --- travel from a hard $s$ to $1-s$, where a writing arrives, and back --- is inversion, the first page of I, applied to the index.
+The wrapped object satisfies
+\[
+X(s)=X(1-s).
+\]
+That is the lock, written on the two-part index.
+
+Under that identification the dual sum in the strip is the writing the stock is allowed to set to zero.
+A seated vanishing of that writing, from one HERE, with one centre, has real part $1/2$.
+
+\begin{theorem}[The later name]
+If the derived unit is identified with the classical limit obtained by reading plan, section, and elevation together through finished stations, then every non-trivial zero of that limit has real part $1/2$.
+\end{theorem}
+
+\begin{proof}
+The identification names $Z(s)$ on $\sigma>1$ as the series already written, names the wrap $\chi$ as the factor that enforces $X(s)=X(1-s)$, and names a seated vanishing as a meeting of that continued object in the strip.
+By the midline theorem every meeting of the derived unit has real part $1/2$.
+The identification therefore carries the midline onto the later name.
+\end{proof}
+
+The identification is granted only after the drawings exist together.
+It is not an ingredient of the construction.
+It is a name for the reading.
+
+A meeting off the cut would be two centres named as one arrival, or a second primary self-description of location.
+The geometry does not admit either.
+
+The first sentence is still the sentence.
+Where is $1$?
+On the cut.
+Walk there and you are HERE.
+The meetings that can be seated sit on that same line, because there is no other primary ratio for them to occupy.
+
+% =====================================================================
+\section{What a zero is, in this stock}
+% =====================================================================
+
+A zero of the later name is not a pebble in the disk.
+It is not a last index.
+It is not an extra room that appears when the count is declared finished.
+
+It is a derived unit of measurement from one HERE: a pause, one own-origin, elevation looking at the closed unit from outside.
+The formula that vanishes is the dual sum of the pair, wrapped so $|\chi|=1$.
+The line it is allowed to occupy is the cut the unit already had.
+
+That is all a seated vanishing is.
+The word zeroing, used for hanging a live frame on the half-line, stays the hinge.
+It is not this meeting.
+The meeting is what the hinge permits after the three drawings have been read together.
+
+% =====================================================================
+\section{What stands}
+% =====================================================================
+
+Forced, and already forced in I--V, now with the elevation written:
+look-back from a pause is $\log n$;
+the weight of a tick is $n^{-s}$;
+the series and the product are two drawings of one walk;
+complementary interiors meet if and only if $\sigma=\tfrac12$;
+a dated product never vanishes;
+dated dual crossings are crop;
+$|\chi|=1$ if and only if $\sigma=\tfrac12$;
+a pause is one own-origin;
+every seated meeting of the derived unit has real part $1/2$.
+
+Named:
+elevation, dated, dual sum, derived unit, meeting of the derived unit.
+
+Granted as a reading, after the drawings exist together:
+the identification of that derived unit with the classical limit of the same reading, and therefore the statement that every seated vanishing of that limit has real part $1/2$.
+
+Not granted:
+a second primary ratio;
+two centres at one pause;
+a name treated as a seat;
+a dated crossing treated as a meeting;
+a completed $n$-count as a first ingredient;
+infinity as a last index;
+the later name as an ingredient of I, II, or III.
+
+The question is still the first sentence.
+The answer is still the same unit.
+Point to it.
+You are pointing at the hold you already closed, at the cut that hold still admits, and at the elevation that looks at both from outside.
+All three are $1$.
+Arrive there and you are HERE.
+
+\end{document}

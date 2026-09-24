@@ -1,0 +1,83 @@
+elements-of-position/
+│
+├── README.md                    one page: what this is, the pipeline, how to rebuild everything
+├── OVERVIEW.tex / .pdf           the philosophical entry point — gets its own DOI, versioned in place
+├── PRINCIPLES.md                 the discipline, extracted as a checklist
+├── LICENSE
+│
+├── kernels/                      TIER 1 — every minimal generator, one folder each, never numbered
+│   ├── walk/
+│   │   ├── kernel.py             the ~110-line generator, nothing else in this file
+│   │   ├── README.md
+│   │   └── runs/
+│   │       └── 2026-09-19_h0.002_n200000/
+│   │           ├── crossings.csv
+│   │           ├── pairs.csv
+│   │           └── summary.csv
+│   └── ngon/
+│       ├── kernel.py
+│       ├── README.md
+│       └── runs/
+│           └── 2026-09-23_n1-60/
+│               ├── vertices.csv
+│               ├── rings.csv
+│               ├── vertex_structure.csv
+│               └── summary.csv
+│
+├── measures/                     TIER 1 — derived tables, still no drawing, may cross kernels
+│   └── bridge/
+│       ├── bridge_measure.py     h=tan(2pi/n) identity between the two kernels above
+│       ├── README.md
+│       └── runs/2026-09-23/bridge.csv
+│
+├── drawings/                     TIER 1 — FAMILY 1 ONLY: the architectural sheet convention.
+│   │                             ELEMENTS OF POSITION title block, sheet codes, "cut is y=0"
+│   │                             footer. One accent, dry red, means exactly one thing in every
+│   │                             sheet in this folder: the inverse locus (1/m, 1/n -- Q_m's
+│   │                             direct analog). Reads tables only. No exceptions live here.
+│   ├── walk_drawings.py          full set: A0,W1,P1,S1,E1,O1,D1-D7,SCH1,SCH2
+│   ├── ngon_drawings.py          full set, matching weight: A0,P1,P2,E1,D1-D4,SCH1,SCH2
+│   └── synthesis_drawings.py     plates spanning more than one kernel's tables.
+│                                 first (only, for now) tenant: measures/bridge/bridge.csv
+│
+├── papers/                       TIER 2 — one flat numbered sequence, frozen on release
+│   ├── 01-without-an-angle/
+│   │   ├── paper.tex / .pdf
+│   │   ├── doi.txt
+│   │   └── figures/              copied at release time from drawings/ output, not linked live
+│   ├── 02-without-a-landing/
+│   ├── 03-already-there/
+│   └── 04-.../
+│
+├── companions/                   TIER 3, labeled — FAMILY 2: its own established visual
+│   │                             language (serif titles, plain grid, no title block), kept
+│   │                             exactly as-is. Formulas here are deliberately
+│   │                             REIMPLEMENTED from the kernels, not read from their CSVs --
+│   │                             an independent second route to the same numbers, on
+│   │                             purpose, not a violation of the kernel discipline.
+│   └── verification-and-models/
+│       ├── local_circle_models.py
+│       ├── verification.py
+│       ├── README.md             states plainly: independent re-derivation, checked against
+│       │                         kernels/ngon, not sourced from it
+│       └── runs/
+│           ├── measurements.csv, docking_events.csv
+│           ├── marriage_check.png, docking_decay.png
+│           ├── live_model.html                 (interactive, keep as-is)
+│           └── model1_single/, model2_plan_overlay.png, model3_.../  (keep as-is)
+│
+├── narrative/                    TIER 3, labeled — origin story, about-page material
+│   └── the-room-would-not-sit-still.tex
+│
+├── exploratory/                  TIER 3, labeled — timestamped, public, explicitly not Tier 2
+│   ├── README.md                 states the standard difference in one paragraph, once
+│   ├── granted-power/
+│   ├── closed-unit-track/        (I–VI as they stand, including the two missing parts flagged)
+│   └── visual-sketchbook/        FAMILY 3: Elements of Position . Drawings.py, ~30
+│                                 drawing_* functions, never organized into a named set.
+│                                 Panels already ported into drawings/ngon_drawings.py
+│                                 during the Family-1 build are noted here, not duplicated.
+│                                 Everything not yet ported stays pending its own pass.
+│
+└── archive/                      TIER 1, historical only — every superseded kernel script,
+    └── geometric-kernel-history/  dated, kept for provenance, never cited by a live paper

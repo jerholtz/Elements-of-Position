@@ -1,0 +1,36 @@
+.DS_Store
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+.env
+
+# LaTeX build
+*.aux
+*.log
+*.out
+*.toc
+*.synctex.gz
+*.fls
+*.fdb_latexmk
+*.bbl
+*.blg
+
+# local scratch
+*.tmp
+.ipynb_checkpoints/
+measure_out/
+ngon_kernel_out/
+run/
+set/
+
+# caches / editor
+.pytest_cache/
+.mypy_cache/
+.idea/
+.vscode/
+*.swp
+
+# do not commit a nested deposit zip
+elements-of-position.zip

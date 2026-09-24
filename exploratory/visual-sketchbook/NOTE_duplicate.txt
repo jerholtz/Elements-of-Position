@@ -1,0 +1,1 @@
+eop_drawings.py and eop_set_full.py are byte-identical. Keep eop_drawings.py as the name; eop_set_full.py is a spare copy pending the drawing rebuild.

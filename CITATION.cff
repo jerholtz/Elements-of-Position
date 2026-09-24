@@ -1,0 +1,32 @@
+cff-version: 1.2.0
+title: Elements of Position
+message: If you use this work, please cite it.
+type: software
+authors:
+  - family-names: Erholtz
+    given-names: Justin
+version: "2026-09-24"
+date-released: "2026-09-24"
+license: CC-BY-4.0
+abstract: >
+  One figure from two generators: a shear-and-bind walk that never
+  names an angle inside the step, and an n-gon of diameter n.
+  Five parts: The Closed Unit; Without an Angle; Without a Landing;
+  Meetings; Already There. Recorded walk 24 September 2026,
+  h = 0.002, 200000 steps, 127 hits.
+keywords:
+  - geometry
+  - inversion
+  - CORDIC
+  - Stern-Brocot
+  - discrete rotation
+  - AM-GM
+preferred-citation:
+  type: generic
+  title: Elements of Position
+  authors:
+    - family-names: Erholtz
+      given-names: Justin
+  year: 2026
+  month: 9
+  notes: Working record. Five frozen parts and the 24 September kernel run.

@@ -1,0 +1,411 @@
+\documentclass[10pt,a4paper]{article}
+
+\usepackage[margin=1.05in]{geometry}
+\usepackage{setspace}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage[expansion=false]{microtype}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,linkcolor=black,urlcolor=black,citecolor=black}
+\graphicspath{{/home/workdir/artifacts/}}
+
+\titleformat{\section}{\normalsize\bfseries}{}{0em}{}
+\titleformat{\subsection}{\small\bfseries}{}{0em}{}
+\titlespacing*{\section}{0pt}{1.35em}{0.5em}
+\titlespacing*{\subsection}{0pt}{0.9em}{0.3em}
+
+\theoremstyle{plain}
+\newtheorem{proposition}{Proposition}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\theoremstyle{remark}
+\newtheorem{observation}{Observation}
+
+\setstretch{1.14}
+\setlist[itemize]{leftmargin=1.15em,itemsep=0.1em,topsep=0.2em}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\itshape Elements of Position}
+\fancyhead[R]{\small\itshape On a Granted Power}
+\fancyfoot[C]{\small\thepage}
+\renewcommand{\headrulewidth}{0pt}
+
+\begin{document}
+
+\begin{center}
+\vspace*{1.6em}
+{\large Elements of Position}\\[1.4em]
+{\LARGE\bfseries On a Granted Power}\\[0.5em]
+{\small The next pair revises the tilt. Equal weight is the only rate that stays with the list.}\\[1.5em]
+{\normalsize Justin Erholtz}\\[0.3em]
+{\small 20 September 2026}
+\end{center}
+
+\vspace{1.2em}
+
+\noindent
+\textit{A note.}
+Part~I wrote the pair on the hit count \(m\): inner \(1/m\), outer \(m\), product \(1\).
+Part~II wrote the kite factor \(1-1/m^2\) and the increment of that list when hits are kept or sorted.
+This part grants a power \(s\) on the same inner and records what the next hit does to a zero of the resulting balance.
+Claims of two kinds stay apart.
+An identity is checked against the sum.
+A path of a zero as \(N\) grows is a table.
+The operators do not contain the power.
+The pair contains the inner.
+
+\vspace{0.6em}
+\noindent
+\textit{A note on names used here.}
+Inner, outer, lock, hit, pair: as in Part~I.
+Power \(s\): a chosen complex number.
+Balance \(B_N(s)\): defined below.
+Tilt: a zero of \(B_N\) with real part not equal to \(1/2\).
+Landing: that real part becoming \(1/2\) at a later hit, and staying there while the tracker holds.
+
+% ======================================================================
+\section{What is granted}
+% ======================================================================
+
+The inner at hit \(m\) is \(1/m\).
+Write \(m^{-s}\) for a chosen \(s\).
+At \(s=2\) this square is already the inner square in the kite factor \(1-1/m^2\).
+At every other \(s\) the power is extra.
+
+Two writings of one inner: \(m^{-s}\) and \(m^{-(1-s)}\).
+Swapping inner with outer is the map \(s\mapsto 1-s\).
+That is the inversion of Part~I, read on the power.
+
+\begin{definition}[Balance]
+\[
+B_N(s)=\sum_{m=1}^{N}\bigl(m^{-s}-m^{-(1-s)}\bigr).
+\]
+\end{definition}
+
+\begin{proposition}
+For every \(N\ge 1\) and every \(s\),
+\[
+B_N(1-s)=-B_N(s).
+\]
+\end{proposition}
+
+\begin{proposition}
+\[
+B_N\bigl(\tfrac12\bigr)=0.
+\]
+Each term vanishes separately: \(m^{-1/2}-m^{-1/2}=0\).
+\end{proposition}
+
+The lock term is identically zero for every \(s\).
+The first split is the first nonzero term.
+That term alone vanishes only at \(s=1/2\).
+A zero with real part not \(1/2\) therefore uses more than one post-lock hit.
+
+% ======================================================================
+\section{The increment}
+% ======================================================================
+
+Fix a tilt \(s_N\) of the first \(N\) pairs:
+\[
+B_N(s_N)=0,\qquad \mathrm{Re}(s_N)\ne\tfrac12.
+\]
+
+Hit \(N+1\) adds one pair, lengths \(N+1\) and \(1/(N+1)\).
+Its term at the old tilt is
+\[
+\tau_{N+1}(s)=(N+1)^{-s}-(N+1)^{-(1-s)}.
+\]
+
+\begin{proposition}[Increment]
+\[
+B_{N+1}(s_N)=\tau_{N+1}(s_N).
+\]
+\end{proposition}
+
+\begin{proof}
+\[
+B_{N+1}(s)=B_N(s)+\tau_{N+1}(s).
+\]
+At \(s=s_N\) the first summand is zero.
+\end{proof}
+
+Checked on the recorded path called L below, at \(N=128,140,150,160,163\): the two sides agree to the digits printed in that run.
+
+The old tilt is therefore not a zero of \(B_{N+1}\).
+The leftover is exactly the new pair’s term.
+A new tilt \(s_{N+1}\) is any number with \(B_{N+1}(s_{N+1})=0\).
+To first order,
+\[
+s_{N+1}-s_N\approx -\frac{\tau_{N+1}(s_N)}{B_N'(s_N)}.
+\]
+On the recorded paths that estimate tracks the change in the imaginary part to about \(3\times 10^{-4}\) per step while the step is small.
+It is only rough on the real part, and it fails at a landing step, where the real part jumps to \(1/2\) in one hit.
+
+After a landing the new-pair term is still not zero.
+It no longer changes the real part.
+It changes the imaginary part.
+
+% ======================================================================
+\section{What the next pair does: two recorded paths}
+% ======================================================================
+
+Path L. Started at \(N=128\), \(s=0.803+19.398i\).
+Each step uses the previous zero as the Newton start.
+
+\begin{center}
+\begin{tabular}{rccc}
+\(N\) & \(\mathrm{Re}(s)\) & \(\mathrm{Im}(s)\) & \(\lvert\mathrm{Re}(s)-1/2\rvert\) \\
+\hline
+128 & 0.803 & 19.398 & 0.303 \\
+160 & 0.610 & 18.496 & 0.110 \\
+164 & 0.500 & 18.424 & 0 \\
+320 & 0.500 & 16.824 & 0
+\end{tabular}
+\end{center}
+
+Landing at \(N=164\).
+Every recorded step before that landing decreased the distance to \(1/2\).
+
+Path G. Started at \(N=96\), \(s=0.655+17.256i\).
+Same continuation.
+
+\begin{center}
+\begin{tabular}{rcccc}
+step & \(\mathrm{Re}(s)\) & \(\Delta\mathrm{Re}\) & \(\lvert\tau\rvert\) & direction \\
+\hline
+\(96\to 97\) & 0.655 & \(+0.017\) & 0.175 & away \\
+\(110\to 111\) & 0.752 & \(+0.002\) & 0.284 & away \\
+\(120\to 121\) & 0.756 & \(-0.001\) & 0.284 & in \\
+\(160\to 161\) & 0.633 & \(-0.006\) & 0.117 & in \\
+\(172\to 173\) & 0.527 & \(-0.027\) & 0.032 & in, lands
+\end{tabular}
+\end{center}
+
+Twenty steps away from \(1/2\), then fifty-seven in.
+The new-pair term grew on the away stretch and shrank on the in stretch.
+The first-order sign of \(\Delta\mathrm{Re}\) matched the away stretch.
+It lagged the actual turn by a few hits.
+Landing at \(N=173\).
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.92\textwidth]{GP1_paths_sigma.png}
+\caption{Sheet GP1. Real part of paths G and L against the hit count. The rule is \(\mathrm{Re}(s)=1/2\).}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.92\textwidth]{GP2_plane.png}
+\caption{Sheet GP2. The same paths in the plane of the granted power.}
+\end{figure}
+
+The increment identity does not have one sign.
+The next pair can raise the real part or lower it.
+It cannot leave the old tilt a zero.
+The new length is fixed.
+
+% ======================================================================
+\section{Table of continued families}
+% ======================================================================
+
+Nineteen families were started from off-line zeros found at \(N=32\), \(96\), \(128\), and \(192\), in a search window \(\mathrm{Re}(s)\in[-0.4,2.4]\), \(t\in(0,42]\), and continued hit by hit.
+
+\begin{center}
+\begin{tabular}{lccc}
+born at & families & landing \(N\) & later status \\
+\hline
+32 & 4 & 37, 39, 47, 56 & on the line through 240 \\
+96 & 3 & 97, 97, 173 & on the line; one tracker jump \\
+128 & 8 & 133--179 & on the line through 450 \\
+192 & 4 & 202--303 & on the line; one tracker jump
+\end{tabular}
+\end{center}
+
+Nineteen started.
+Nineteen landed at a finite later \(N\).
+Two trackers jumped to a distant imaginary part after landing and were dropped.
+No continued family returned to \(\mathrm{Re}(s)\ne 1/2\) while the residual stayed below \(10^{-6}\).
+
+Two families born at different \(t\) were observed to occupy the same on-line point at large \(N\).
+
+This is a table of families that were started.
+It is not a census of every zero of every \(B_N\).
+A min-over-grid distance to \(\mathrm{Re}(s)=1/2\) is not monotone in \(N\), because new off-line zeros appear as \(N\) grows and because a family already in hand can move away before it lands (path G).
+
+\begin{observation}[A wider census, checked against the argument principle]
+\label{obs:widecensus}
+A grid search is only ever a sample; it cannot certify that nothing was missed.
+The argument principle can: for an entire function, the winding of its values around a rectangle's boundary counts the zeros inside \emph{exactly}, independent of any grid.
+At the same seven birth points, \(N=32,64,96,128,160,192,256\), and the same window, \(\sigma\in[0.51,2.4]\), \(t\in[0.5,90]\) --- more than double the earlier search in \(t\), against four birth points, not seven --- the winding of \(B_N\) around that rectangle gives the exact off-line count at each \(N\): \(14,27,29,28,33,32,34\), a total of \(197\).
+A first search of this window, by grid and Newton refinement at a fixed resolution, found only \(109\): roughly half.
+A second search, refining not by a finer fixed grid but by recursive subdivision --- halve any sub-rectangle whose winding is not \(0\) or \(1\), refine by Newton once it is \(1\), and accept the root only if it lands back inside the sub-rectangle that isolated it --- found \(192\) of the \(197\), exact at two of the seven birth points and short by one at the other five.
+The five short cases trace to a sub-rectangle boundary passing close enough to a zero to make its winding briefly ambiguous at the resolution tried; deeper subdivision would likely close the rest, and does not change what follows.
+All \(192\) were continued, hit by hit, to \(N=2000\).
+Every one landed.
+None was observed to leave \(\mathrm{Re}(s)=1/2\) again while its residual stayed below \(10^{-6}\).
+Landing \(N\) ranged from \(33\) to \(393\), median \(166\).
+\end{observation}
+
+This does not change what the original table already stood on --- landing is still reported from a table, not proved --- but the table is now checked, not merely sampled: \(197\) is not a guess at how many off-line zeros the window holds, it is what the window holds, by the same principle that makes a contour integral count something a grid can only estimate.
+
+\begin{proposition}[Exponential type of the line reduction]
+\label{prop:linetype}
+On \(\mathrm{Re}(s)=1/2\), write \(s=\tfrac12+it\).
+Then \(B_N(\tfrac12+it)=-2i\,f_N(t)\), where
+\[
+f_N(t)=\sum_{m=2}^N m^{-1/2}\sin(t\ln m).
+\]
+\(f_N\) extends to an entire function of the complex variable \(t\), of exponential type at most \(\ln N\).
+\end{proposition}
+
+\begin{proof}
+\(m^{-1/2-it}-m^{-1/2+it}=m^{-1/2}\bigl(e^{-it\ln m}-e^{it\ln m}\bigr)=-2i\,m^{-1/2}\sin(t\ln m)\); sum over \(m=2,\ldots,N\) (the lock term \(m=1\) contributes \(\sin(0)=0\)).
+For complex \(t=x+iy\), \(|\sin(t\ln m)|\le\tfrac12 e^{|y|\ln m}\le\tfrac12 e^{|y|\ln N}\) for every \(m\le N\).
+Summing,
+\[
+|f_N(x+iy)|\le\tfrac12\,e^{|y|\ln N}\sum_{m=2}^N m^{-1/2},
+\]
+a bound growing at rate \(\ln N\) in \(|y|\) and independent of \(x\); this is exactly the definition of exponential type \(\le\ln N\).
+\end{proof}
+
+By the density theorem for entire functions of exponential type bounded on the real line \cite{boas1954}, an entire function of type \(\tau\) has, in any interval of length \(L\), at most \(\tau L/\pi+o(L)\) real zeros --- the same bound \(\sin(\tau t)\) meets with equality.
+Proposition~\ref{prop:linetype} therefore forces the density of on-line zeros of \(B_N\) to be at most \((\ln N)/\pi\) per unit length of \(t\), for every \(N\).
+This is not the plausibility argument of an earlier draft of this note; it is a consequence of \(f_N\) itself, checked once and standing for every \(N\).
+
+\begin{observation}[The bound holds, and is not tight]
+\label{obs:crowding}
+Measured directly --- counting sign changes of \(f_N\) over long windows of \(t\), averaged over several windows to damp sampling noise --- the on-line zero density grows with \(N\), stays under Proposition~\ref{prop:linetype}'s ceiling at every \(N\) tried, and does not approach it:
+\begin{center}
+\begin{tabular}{rccc}
+\(N\) & measured density & ceiling \(\ln(N)/\pi\) & ratio \\
+\hline
+16 & 0.61 & 0.88 & 0.69 \\
+64 & 1.01 & 1.32 & 0.76 \\
+256 & 1.18 & 1.77 & 0.67 \\
+1024 & 1.20 & 2.21 & 0.54 \\
+4096 & 1.29 & 2.65 & 0.49 \\
+\end{tabular}
+\end{center}
+The ratio falls as \(N\) grows: the true density grows more slowly than the ceiling, by a factor this note does not derive.
+What the ceiling already explains is the wander seen in continuing a landed family well past its landing \(N\): one family, born at \(N=64\), landed at \(N=65\) near \(t\approx30.7\); by \(N=100\) it sat near \(t\approx45.5\) and stayed there, to within about \(0.2\), through \(N=800\), \(\mathrm{Re}(s)\) at \(1/2\) to machine precision throughout, before a Newton tracker with a bounded iteration budget lost the thread.
+A window of \(t\) that holds one on-line zero at \(N=65\) holds several by \(N=800\), by a growth Proposition~\ref{prop:linetype} bounds and the table above measures; at that density a step taken from one on-line zero can land on a neighbor instead of re-finding the same one, and asking which of them is still ``the same'' family is a question the operators do not answer.
+This, not a return off the line, is why most trackers in Observation~\ref{obs:widecensus} eventually lost lock, always long after that family had already landed --- and why raising the tracker's own iteration budget recovers some of them, since the difficulty is telling neighbors apart, not losing the line.
+\end{observation}
+
+% ======================================================================
+\section{Where the list does not halt}
+% ======================================================================
+
+Infinity in this construction is already written. It has four readings. They are not four objects.
+
+\begin{proposition}
+\[
+B_N(1)=\sum_{m=1}^{N}\frac1m - N,\qquad
+B_N(0)=N-\sum_{m=1}^{N}\frac1m=-B_N(1).
+\]
+\end{proposition}
+
+At \(s=1\) one writing is the inner and the other is the constant \(1\).
+At \(s=0\) those two writings have swapped.
+The lock term is still zero.
+The first split contributes \(-1/2\) at \(s=1\) and \(+1/2\) at \(s=0\).
+As \(N\) grows both quantities leave every bound: at \(N=127\), \(\lvert B_N(1)\rvert\approx 121.57\); at \(N=400\), \(\approx 393.43\).
+The infinite list does not produce a finite balance at these two powers.
+They sit at the ends of the segment that \(1/2\) bisects.
+
+The hit count itself has no last term.
+Inner \(1/m\to 0\), outer \(m\to\infty\).
+Inversion \(Q=P/|P|^2\) has its pole at the origin.
+The walk never occupies that point: \(\lvert P_m\rvert=m\ge 1\).
+As \(m\to\infty\), \(P\) leaves every disk and \(Q\) approaches the origin.
+That pole is the same infinity as the hit count, read on the ray.
+
+Exact closure of Part~I is the kick \(h=\tan(\pi/n)\).
+At \(n=2\) the formula is undefined.
+A large finite kick does not write that half-turn.
+On trials \(h=2,5,10,20,50,100\), the first sign change of the second coordinate from the start \((1,0)\) occurs at step \(3\).
+The heading's second coordinate at that hit approaches \(-1\) and does not arrive at a finite kick.
+That pole is infinity of the kick, not of the pair.
+
+% ======================================================================
+\section{Which weight can stay a balance}
+% ======================================================================
+
+The two writings at hit \(m\) have sizes \(m^{-\sigma}\) and \(m^{\sigma-1}\).
+Those sizes are equal if and only if \(\sigma=1/2\).
+The larger size is \(m^{-\alpha(\sigma)}\) with
+\[
+\alpha(\sigma)=\max(\sigma,\,1-\sigma).
+\]
+Always \(\alpha(\sigma)\ge 1/2\), with equality only at \(\sigma=1/2\).
+
+At a frozen \(s\) the next pair therefore arrives with size about \(N^{-\alpha(\sigma)}\).
+On the equal-weight line that is \(N^{-1/2}\).
+Off the line it is strictly larger.
+
+Recorded \(\lvert B_N\rvert\) at \(t=18\) through \(N=2048\):
+on \(\sigma=1/2\), \(\lvert B_N\rvert/\sqrt{N}\) stays of order \(10^{-2}\) and does not trend up;
+on \(\sigma=0.8\), \(\lvert B_N\rvert/N^{0.8}\) stays of order \(5\times 10^{-2}\), so \(\lvert B_N\rvert\) grows like \(N^{0.8}\).
+The path at \(\sigma=0.2\) is the same numbers, by reflection.
+
+The infinite list can keep an oscillating partial sum at the on-line rate.
+Off the line the partial sum follows the faster writing.
+A frozen unequal weight is not a balance of the whole list.
+A tilt has to move.
+This does not force every moving tilt to arrive at a finite \(N\).
+It does force the comparison: a weight that stays off \(1/2\) pays a strictly larger term at every later hit.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.92\textwidth]{GP3_growth.png}
+\caption{Sheet GP3. Frozen \(s\), \(t=18\). On-line scaled by \(\sqrt{N}\); off-line scaled by \(N^{0.8}\).}
+\end{figure}
+
+% ======================================================================
+\section{What stands}
+% ======================================================================
+
+Forced, once the power is granted:
+the reflection \(B_N(1-s)=-B_N(s)\);
+the termwise zero at \(s=1/2\);
+the increment \(B_{N+1}(s_N)=\tau_{N+1}(s_N)\);
+the lock term identically zero;
+the two closed forms \(B_N(1)=\sum 1/m-N\) and \(B_N(0)=N-\sum 1/m\);
+\(\alpha(\sigma)=\max(\sigma,1-\sigma)\ge 1/2\), equality only at \(\sigma=1/2\);
+the exponential type of the line reduction \(f_N\) (Proposition~\ref{prop:linetype}), and the ceiling \((\ln N)/\pi\) it forces on on-line zero density.
+
+Reported from a table:
+the wider census of Observation~\ref{obs:widecensus} --- \(197\) off-line zeros in the search window, exactly, by the argument principle; \(192\) of them found and continued; all \(192\) landed by \(N=393\);
+the away-then-in stretch on path G;
+the first-order estimate’s range of usefulness;
+\(\lvert B_N\rvert\) at frozen \(s\), on and off the line, through \(N=2048\);
+the measured on-line density against its proven ceiling (Observation~\ref{obs:crowding}), well under at every \(N\) tried and not shown to approach it.
+
+Not granted:
+a landing of every zero of every \(B_N\);
+a value of \(s\) treated as written by the shear;
+a motion of the kite, which does not depend on \(s\);
+a fixed identity for an on-line family once the zeros crowding its window (Observation~\ref{obs:crowding}) make ``the same zero'' a question the operators do not answer;
+the true growth rate of that crowding, only a proven ceiling on it and a measurement sitting under that ceiling.
+
+The pair wrote the inner.
+The next hit wrote a fixed new inner.
+The increment is that new inner, raised to the two writings, and nothing else.
+Where is \(1\)?
+It is still the lock.
+The lock does not enter the balance.
+Everything after is the same pair, with a power placed on it, and with one more count.
+
+\newpage
+\begin{thebibliography}{9}
+
+\bibitem{boas1954}
+R.\,P.\ Boas, Jr., \emph{Entire Functions}, Academic Press, 1954.
+
+\end{thebibliography}
+
+\end{document}

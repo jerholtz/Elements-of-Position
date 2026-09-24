@@ -1,0 +1,425 @@
+\documentclass[10pt,a4paper]{article}
+
+\usepackage[margin=1.05in]{geometry}
+\usepackage{setspace}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{caption}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{microtype}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+
+\hypersetup{colorlinks=true,linkcolor=black,urlcolor=black,citecolor=black}
+\captionsetup{font=small,labelfont=bf,skip=4pt,justification=raggedright}
+
+\titleformat{\section}{\normalsize\bfseries}{}{0em}{}
+\titleformat{\subsection}{\small\bfseries}{}{0em}{}
+\titleformat{\subsubsection}{\small\itshape}{}{0em}{}
+\titlespacing*{\section}{0pt}{1.35em}{0.5em}
+\titlespacing*{\subsection}{0pt}{0.95em}{0.35em}
+
+\theoremstyle{plain}
+\newtheorem{proposition}{Proposition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\theoremstyle{remark}
+\newtheorem{observation}{Observation}
+\newtheorem{remark}{Remark}
+
+\setstretch{1.14}
+\setlist[itemize]{leftmargin=1.15em,itemsep=0.1em,topsep=0.2em}
+\setlist[enumerate]{leftmargin=1.15em,itemsep=0.1em,topsep=0.2em}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\itshape Elements of Position}
+\fancyhead[R]{\small\itshape \ The Geometric Kernel}
+\fancyfoot[C]{\small\thepage}
+\renewcommand{\headrulewidth}{0pt}
+
+\begin{document}
+
+\begin{center}
+\vspace*{2.2em}
+{\large Elements of Position}\\[1.6em]
+{\LARGE\bfseries\ The Geometric Kernel}\\[2.2em]
+{\normalsize Justin Erholtz}\\[0.35em]
+{\small 18 September 2026}
+\end{center}
+
+\vspace{2.4em}
+
+\begin{center}
+{\large What the walk measures}
+\end{center}
+
+\vspace{1.8em}
+
+\noindent
+Paper~I named the closed unit and the pair.
+This paper is the walk that produces those measurements from two operators and a count.
+Nothing is loaded into the operators.
+What is named after the fact --- a half-turn length, a leftover of two readings, a ratio of chord to path --- is read off the tables the walk writes.
+
+The source is \texttt{Elements\_of\_Position\_Geometric\_Kernel.py}.
+The tables are \texttt{eop\_crossings.csv}, \texttt{eop\_pairs.csv}, \texttt{eop\_summary.csv}, from a run with shear \(h=0.002\) and \(400\) horizon hits.
+Those numbers are a sheet size and a depth of count.
+The identities do not belong to that sheet.
+
+\vspace{1.4em}
+
+\noindent
+\textit{A note.}
+Claims that can be proved from the operators are proved as identities.
+Claims that are counts are reported from the tables.
+The two are kept apart.
+
+\newpage
+\tableofcontents
+\newpage
+
+% =====================================================================
+\section{The two operators}
+% =====================================================================
+
+Start at \((1,0)\).
+A heading is a pair of coordinates whose length after the bind is \(1\).
+
+\begin{definition}[Shear]
+For a step size \(h>0\),
+\[
+T_h(x,y)=(x-hy,\,y+hx).
+\]
+\end{definition}
+
+\begin{definition}[Bind]
+\[
+N(x,y)=\frac{1}{\sqrt{x^2+y^2}}(x,y).
+\]
+\end{definition}
+
+\begin{definition}[Step]
+\[
+\mathrm{step}(x,y)=N\bigl(T_h(x,y)\bigr).
+\]
+\end{definition}
+
+If the last state already had length \(1\), the un-bound length after the shear is an identity of the sheet:
+\[
+\bigl|T_h(x,y)\bigr|=\sqrt{1+h^2}.
+\]
+The bind leftover of one kick is therefore
+\[
+\sqrt{1+h^2}-1,
+\]
+constant in the step index.
+On the recorded run this is \(1.999998\times 10^{-6}\).
+The Euclidean distance between two successive bound headings is likewise a function of \(h\) only.
+On the recorded run it is \(0.001999997\).
+Those two numbers describe the grain of the walk.
+They are not a position on the pair.
+
+% =====================================================================
+\section{The horizon count}
+% =====================================================================
+
+A hit is the heading crossing the line \(y=0\).
+Down: \(y>0\) then \(y\le 0\).
+Up: \(y<0\) then \(y\ge 0\).
+Each hit is one half-turn of the heading.
+
+\begin{definition}[First gap]
+\(H_0\) is the step index of the first hit.
+\end{definition}
+
+On the recorded run \(H_0=1571\), side down, heading
+\[
+(-0.99999992,\,-0.00040316).
+\]
+The heading is on the left horizon to one kick of vertical.
+
+\begin{definition}[Snap scale]
+The \(m\)-th hit has snap scale \(k=m\).
+\end{definition}
+
+The frozen scale \(k_{\mathrm{frozen}}=j/H_0\) uses the first gap as a fixed ruler.
+The two scales agree at \(m=1\).
+They part when later gaps are not exactly \(H_0\).
+
+\subsection{Gaps}
+
+After the first hit the tables show only two gap values, \(1570\) and \(1571\).
+Histogram on \(400\) hits:
+\[
+1571\text{ occurs }320\text{ times},\qquad
+1570\text{ occurs }80\text{ times}.
+\]
+Mean gap:
+\[
+1570.8.
+\]
+The length a continuous turn of this shear would take is \(\pi/\mathrm{atan}(h)=1570.798421\).
+The discrete walk cannot land on that length, so it pays with the two neighboring integers.
+The mean tracks the continuous half-turn to three decimal places.
+
+\begin{observation}
+\(H_0\cdot h=3.142\) on this sheet.
+That product is the half-turn read as steps times step size.
+It is not inserted into \(T_h\) or \(N\).
+\end{observation}
+
+\subsection{Heading at the hits}
+
+At every recorded hit the heading sits on a horizon.
+Odd \(m\) (down): \(h_x\approx -1\), \(h_y\) in \((-0.002,0]\).
+Even \(m\) (up): \(h_x\approx +1\), \(h_y\) in \([0,0.002)\).
+The vertical coordinate never grows with \(m\).
+Sampling at the cross keeps the heading on the wall.
+Sampling at \(m\cdot H_0\) does not: that ruler stacks the first-crossing leftover and the heading walks off the axis.
+
+% =====================================================================
+\section{The pair}
+% =====================================================================
+
+At snap scale \(k=m\),
+\[
+r_{\mathrm{out}}=\frac k2,\qquad
+r_{\mathrm{in}}=\frac2k.
+\]
+
+\begin{proposition}
+\label{prop:product}
+For every \(k>0\),
+\[
+r_{\mathrm{out}}\,r_{\mathrm{in}}=1.
+\]
+\end{proposition}
+
+\begin{proof}
+Immediate.
+\end{proof}
+
+\begin{proposition}
+\label{prop:gm}
+\[
+\mathrm{GM}(r_{\mathrm{out}},r_{\mathrm{in}})=1.
+\]
+\end{proposition}
+
+\begin{proof}
+\(\sqrt{r_{\mathrm{out}}r_{\mathrm{in}}}=\sqrt{1}=1\).
+\end{proof}
+
+The crossings table records \(\mathrm{gm}=1\) on every row, to machine precision.
+One row at \(m=374\) prints \(0.9999999999999999\).
+That is the same identity written in floating point.
+
+\begin{definition}[Leftover of the pair]
+\[
+\tau(k)=\mathrm{AM}-\mathrm{GM}
+=\frac{k/2+2/k}{2}-1
+=\frac k4+\frac1k-1.
+\]
+\end{definition}
+
+\begin{proposition}
+\label{prop:kiss}
+\(\tau(k)=0\) if and only if \(k=2\) (for \(k>0\)).
+\end{proposition}
+
+\begin{proof}
+\(\frac k4+\frac1k=1\) multiplies to \(k^2-4k+4=0\), hence \((k-2)^2=0\).
+\end{proof}
+
+The table: \(m=2\), \(\tau=0\), \(r_{\mathrm{out}}=r_{\mathrm{in}}=1\), side up, \(j=3142=2H_0\).
+That is the kiss.
+At \(m=1\), \(\tau=1/4\).
+At \(m=4\), \(\tau=1/4\) again.
+
+\begin{proposition}
+\label{prop:fold}
+\(\tau(k)=\tau(4/k)\) for every \(k>0\).
+\end{proposition}
+
+\begin{proof}
+Substitute.
+\end{proof}
+
+The walls swap:
+\[
+r_{\mathrm{out}}(k)=r_{\mathrm{in}}(4/k),\qquad
+r_{\mathrm{in}}(k)=r_{\mathrm{out}}(4/k).
+\]
+The pairs table records this at \(m=1\) with partner \(m=4\): leftover \(0.25\) on both sides, walls \((0.5,2)\) against \((2,0.5)\).
+At \(m=2\) the state is its own partner.
+
+The pairs file as written only keeps partners that round to an integer snap inside the run.
+For \(k>4\) the partner \(4/k\) lies below \(1\) and is discarded by that rounding.
+The identity \(\tau(k)=\tau(4/k)\) does not need the partner to be an integer snap.
+It is an identity of the pair formula.
+
+% =====================================================================
+\section{Chord and path of one half-turn}
+% =====================================================================
+
+Place the outward wall on the heading:
+\[
+P_m=r_{\mathrm{out}}(m)\,(h_x,h_y).
+\]
+The straight line from \(P_{m-1}\) to \(P_m\) is the leg chord.
+The summed micro-path between those hits is the leg path.
+The table column \(\mathrm{leg\_chord\_over\_path}\) is their ratio.
+
+\begin{proposition}
+If the heading at hit \(m-1\) is the opposite of the heading at hit \(m\), and the radii are \((m-1)/2\) and \(m/2\), the chord is
+\[
+\frac{m-1}{2}+\frac m2=m-\tfrac12.
+\]
+\end{proposition}
+
+\begin{proof}
+Opposite unit headings \(u\) and \(-u\):
+\[
+\bigl|(m/2)(-u)-((m-1)/2)u\bigr|=\bigl(m/2+(m-1)/2\bigr)|u|=m-\tfrac12.
+\]
+\end{proof}
+
+The table: \(m=2\) chord \(1.500000\); \(m=3\) chord \(2.500000\); \(m=4\) chord \(3.500000\).
+The pattern holds.
+
+The ratio of that chord to the summed path climbs toward \(2/\pi\).
+Selected rows:
+
+\begin{center}
+\begin{tabular}{@{}rrr@{}}
+\toprule
+\(m\) & chord/path & \(2/\pi\) \\
+\midrule
+2 & \(0.62243\) & \(0.63662\) \\
+4 & \(0.63402\) & \\
+10 & \(0.63665\) & \\
+20 & \(0.63689\) & \\
+100 & \(0.63695\) & \\
+400 & \(0.63654\) & \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The half-turn of a circle has diameter over semicircle equal to \(2/\pi\).
+That is what the long baseline is reading.
+The small oscillation at large \(m\) is the leftover angle of a discrete hit, not a second constant.
+
+% =====================================================================
+\section{The leftover integrated}
+% =====================================================================
+
+From the kiss outward the leftover of the pair is a region between the two walls and the axle \(\mathrm{GM}=1\).
+Its integral in the snap scale is
+\[
+\int_2^N\tau(k)\,dk
+=\Bigl[\frac{k^2}{8}+\ln k-k\Bigr]_2^N
+=\frac{N^2}{8}+\ln N-N+\frac32-\ln 2.
+\]
+
+On the recorded run \(N=400\):
+\[
+\frac{400^2}{8}+\ln 400-400+\frac32-\ln 2=19606.798317.
+\]
+The summary table:
+\[
+\texttt{wedge\_from\_crossings}=19606.798317366545,
+\]
+\[
+\texttt{wedge\_closed}=19606.79831736655,
+\]
+difference \(-3.6\times 10^{-12}\).
+The script sums the same antiderivative from hit to hit.
+The match is the identity, not a numerical accident.
+
+When the leftover is instead accumulated as a rectangle sum along a frozen-\(H_0\) walk, the difference from the closed form at large \(N\) is
+\[
+\frac{\text{discrete}-\text{closed}}{N\,h}\approx\frac{1}{8\pi}.
+\]
+Check at an earlier frozen run, \(N=3600\), \(h=0.002\):
+\[
+\frac{0.28612}{3600\times 0.002}=0.03974,\qquad
+\frac{1}{8\pi}=0.03979.
+\]
+That ratio is the staircase error on the \(k^2/8\) term once \(H_0\sim \pi/h\).
+It is a property of summing on the frozen ruler.
+The snap integral does not carry it.
+
+% =====================================================================
+\section{What the three files hold}
+% =====================================================================
+
+\subsection{\texttt{eop\_summary.csv}}
+
+\begin{center}
+\begin{tabular}{@{}ll@{}}
+\toprule
+key & value \\
+\midrule
+\(h\) & \(0.002\) \\
+\(H_0\) & \(1571\) \\
+half-turns & \(400\) \\
+sheet leftover & \(1.999998\times 10^{-6}\) \\
+heading chord & \(0.001999997\) \\
+\(\pi/\mathrm{atan}(h)\) & \(1570.798421\) \\
+\(H_0\cdot h\) & \(3.142\) \\
+wedge (snap) & \(19606.798317\) \\
+wedge (closed) & \(19606.798317\) \\
+mean gap & \(1570.8\) \\
+gap min / max & \(1570\) / \(1571\) \\
+histogram & \(\{1571:320,\,1570:80\}\) \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Sheet: \(h\), leftover of one kick, heading chord, \(H_0\).
+Object: product of the walls, leftover formula, kiss at \(2\), mean gap tracking the continuous half-turn, wedge identity.
+
+\subsection{\texttt{eop\_crossings.csv}}
+
+Four hundred rows, one per hit.
+Forced on every row: \(\mathrm{gm}=1\), \(r_{\mathrm{out}}r_{\mathrm{in}}=1\), \(\tau=k/4+1/k-1\), heading on a horizon.
+Side alternates down, up, down, up.
+Frozen scale at \(m=400\) is \(399.949\), snap scale is \(400\).
+The ruler \(j/H_0\) has slipped by five hundredths of a half-turn.
+The heading has not.
+
+\subsection{\texttt{eop\_pairs.csv}}
+
+Integer partners of \(k\leftrightarrow 4/k\) that land inside the run.
+The only clean integer pair in \(1\le k\le 400\) is \(1\leftrightarrow 4\), and the self-pair \(2\leftrightarrow 2\).
+Rows that list partner \(m=1\) for \(k>4\) are the rounding rule, not the involution.
+Read the involution from the formula and from \(m=1,2,4\).
+
+% =====================================================================
+\section{What stands}
+% =====================================================================
+
+The operators produce a heading that counts its own half-turns.
+The count is two neighboring integers whose mean is the continuous half-turn of that shear.
+Scale is the hit index.
+The pair at that scale has product \(1\) and leftover \(\frac k4+\frac1k-1\), zero only at \(2\).
+Chord over a half-turn of the outward wall, against the path of that same half-turn, reads \(2/\pi\).
+The leftover integrated from the kiss is the elementary antiderivative of \(\tau\).
+A frozen first-crossing ruler rotates the heading off the axis; a snap to the axis does not.
+
+Named after the measure, not before it: \(H_0\cdot h\) as a half-turn length; \(2/\pi\) as diameter over semicircle; \(1/(8\pi)\) as the frozen-sum error.
+None of those names enters \(T_h\) or \(N\).
+
+What is not granted: a last decimal as closure of the heading; a completed run of the count; a leftover of the pair treated as a capacity or a field.
+
+The first sentence of Paper~I is still the sentence.
+The kernel is how the walk answers it.
+
+\end{document}

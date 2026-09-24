@@ -1,0 +1,20 @@
+ELEMENTS OF POSITION
+Notes to the set
+19 September 2026
+
+The model is built from the kernel tables.
+The kernel walked. This set did not.
+
+Shear T_h(x,y) = (x − h y, y + h x).
+Bind N restores x² + y² = 1.
+Station: start (1,0). Hit: y changes sign.
+Height in the model is the hit index m.
+Outer point: P = m u at z = m. Then r = z.
+Inverse point: Q = (1/m) u at z = m. Then r = 1/z.
+The unit circle is the bind. The plane y = 0 is the cut.
+
+h = 0.002
+steps = 200000
+H0 = 1571
+hits = 127
+mean gap · h = 3.14160630

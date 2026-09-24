@@ -1,0 +1,10 @@
+{
+  "title": "Elements of Position",
+  "upload_type": "other",
+  "description": "Working record of one geometric figure: a closed unit whose interior remains divisible; two operators (shear then bind) that never name an angle inside the step; an n-gon of diameter n. Five parts. Tables from the 24 September 2026 walk (h = 0.002, 200000 steps, 127 hits) and matching n-gon and bridge runs. Drawings read those tables.",
+  "creators": [{ "name": "Erholtz, Justin" }],
+  "keywords": ["geometry", "inversion", "discrete rotation", "CORDIC", "Stern-Brocot"],
+  "license": "cc-by-4.0",
+  "publication_date": "2026-09-24",
+  "version": "2026-09-24"
+}

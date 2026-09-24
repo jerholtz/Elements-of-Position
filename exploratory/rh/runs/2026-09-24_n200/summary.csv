@@ -1,0 +1,7 @@
+key,value
+n_max,200
+n_primes,46
+dual_real_sigma_0.5,51.71851469268677
+dual_real_sigma_0.2,94.07911113299892
+dual_real_ratio_off_over_cut,1.819060576120956
+note,weights.gm is n^(-1/2); chi proxy is 1 iff sigma=1/2

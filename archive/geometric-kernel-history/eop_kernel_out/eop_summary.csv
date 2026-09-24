@@ -1,0 +1,15 @@
+key,value
+h,0.002
+H0,1571
+n_half,400
+sheet_leftover,1.99999799987971e-06
+heading_chord,0.00199999700000775
+true_half,1570.798421187765
+H0_times_h,3.142
+wedge_from_crossings,19606.798317366545
+wedge_closed,19606.79831736655
+mean_gap,1570.8
+gap_min,1570
+gap_max,1571
+gap_histogram,"{1571: 320, 1570: 80}"
+wedge_diff,-3.637978807091713e-12

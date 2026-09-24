@@ -1,0 +1,411 @@
+\documentclass[10pt,a4paper]{article}
+
+\usepackage[margin=1.05in]{geometry}
+\usepackage{setspace}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{caption}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{microtype}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+
+\hypersetup{colorlinks=true,linkcolor=black,urlcolor=black,citecolor=black}
+\captionsetup{font=small,labelfont=bf,skip=4pt,justification=raggedright}
+
+\titleformat{\section}{\normalsize\bfseries}{}{0em}{}
+\titleformat{\subsection}{\small\bfseries}{}{0em}{}
+\titlespacing*{\section}{0pt}{1.35em}{0.5em}
+\titlespacing*{\subsection}{0pt}{0.95em}{0.35em}
+
+\theoremstyle{plain}
+\newtheorem{proposition}{Proposition}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\theoremstyle{remark}
+\newtheorem{observation}{Observation}
+
+\setstretch{1.14}
+\setlist[itemize]{leftmargin=1.15em,itemsep=0.1em,topsep=0.2em}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\itshape Elements of Position}
+\fancyhead[R]{\small\itshape The Geometric Kernel}
+\fancyfoot[C]{\small\thepage}
+\renewcommand{\headrulewidth}{0pt}
+
+\begin{document}
+
+\begin{center}
+\vspace*{2.2em}
+{\large Elements of Position}\\[1.6em]
+{\LARGE\bfseries The Geometric Kernel}\\[0.6em]
+{\small minimal run --- 18 September 2026}\\[1.4em]
+{\normalsize Justin Erholtz}\\[0.35em]
+{\small 18 September 2026}
+\end{center}
+
+\vspace{1.6em}
+
+\begin{center}
+{\large What the walk measures}
+\end{center}
+
+\vspace{1.4em}
+
+\noindent
+Paper~I named the closed unit and the pair.
+This paper is the walk that produces those measurements from two operators, a station, and a count.
+Nothing else is in the operators.
+What is named after the fact is read off the tables the walk writes.
+
+The source is \texttt{EOP\_Geometric\_Kernel\_minimal.py}.
+The tables are \texttt{EOP\_crossings\_minimal.csv}, \texttt{EOP\_pairs\_minimal.csv}, \texttt{EOP\_summary\_minimal.csv}, from a run with shear \(h=0.002\) and \(200\,000\) steps (\(127\) horizon hits).
+Those numbers are a sheet size and a depth of count.
+The identities do not belong to that sheet.
+
+\vspace{1.2em}
+
+\noindent
+\textit{A note.}
+Claims that can be proved from the operators are proved as identities.
+Claims that are counts are reported from the tables.
+The two are kept apart.
+Trigonometry does not enter the step.
+It may appear only as a named comparison after the tables exist.
+Named comparisons sit \emph{between} the two integers and the two bands the walk actually writes.
+They are not values the last row equals.
+
+\newpage
+\tableofcontents
+\newpage
+
+\section{What is in the operators}
+
+Start on the diameter: \((1,0)\).
+A heading is a pair of coordinates whose length after the bind is \(1\).
+
+\begin{definition}[Shear]
+For a kick \(h>0\),
+\[
+T_h(x,y)=(x-hy,\,y+hx).
+\]
+\end{definition}
+
+\begin{definition}[Bind]
+\[
+N(x,y)=\frac{(x,y)}{\sqrt{x^2+y^2}}.
+\]
+\end{definition}
+
+\begin{definition}[Step]
+\[
+\mathrm{step}=N\circ T_h.
+\]
+\end{definition}
+
+No angle is an argument of \(T_h\) or of \(N\).
+The shear is an equal opposite mix of the two coordinates.
+The bind restores the quadratic \(x^2+y^2=1\).
+
+If the last heading already had length \(1\), the unbound length after the shear is an identity of the sheet:
+\[
+\bigl|T_h(u)\bigr|=\sqrt{1+h^2}.
+\]
+The bind leftover of one kick is therefore \(\sqrt{1+h^2}-1\), constant in the step index.
+On the recorded run this is \(1.999998\times 10^{-6}\).
+The Euclidean distance between two successive bound headings is a function of \(h\) only.
+On the recorded run it is \(0.001999997\).
+
+Those two numbers describe the grain of the sheet.
+They are not a position on the pair.
+
+The shape of \(T_h\) is not empty.
+Equal opposite off-diagonals are Euclid's quarter-turn generator.
+The bind is Euclid's length.
+Drop either and the walk below does not measure what it measures.
+Neither operator contains a finished turn, a named half-length, or the inverse pair.
+
+\section{The station and the horizon}
+
+The heading begins on \(y=0\).
+A hit is that heading crossing \(y=0\) again.
+
+\begin{definition}[First gap]
+\(H_0\) is the step index of the first hit.
+\end{definition}
+
+On the recorded run \(H_0=1571\), side down, heading
+\[
+(-0.99999992,\,-0.00040316).
+\]
+The heading is on the far wall, one kick of vertical.
+
+Stand on the line you count and the first event is the far side of that line.
+Stand off the line and the first gap is only how far the station was from the wall.
+This run stands on the diameter.
+
+\begin{observation}
+The unit heading from the start to the first far wall has length \(2\).
+The unit heading from the first wall to the second has length \(2\).
+Hits to restore the starting side: \(2\).
+That \(2\) is not a coefficient in the pair formula.
+\end{observation}
+
+On the recorded run both wall chords are \(1.99999996\).
+
+\section{The count is two integers}
+
+After the first hit the tables show only two gap values, \(1570\) and \(1571\).
+On \(127\) hits:
+\[
+1571\text{ occurs }102\text{ times},\qquad
+1570\text{ occurs }25\text{ times}.
+\]
+The first hit is the first gap \(H_0=1571\).
+The remaining word of long and short gaps is
+\[
+\texttt{LLLSLLLLS}\ldots\texttt{LLLLSLL},
+\]
+twenty-five copies of \(\texttt{LLLLS}\) and then \(\texttt{LL}\) because the step budget ended mid-word.
+That \(5\) is the period of this sheet's two-integer payment.
+It is not the pentagon of Paper~III.
+
+Mean gap \(1570.80315\).
+Mean gap times the kick: \(3.14160630\).
+
+\begin{observation}
+The product of the mean gap and the kick is a reading of the sheet.
+It is not inserted into \(T_h\) or \(N\).
+The discrete walk cannot land on one length, so it writes both neighbors.
+\end{observation}
+
+A named comparison after the tables exist: \(\pi=3.14159265\), and \(\pi/\operatorname{atan}(h)=1570.798421\).
+Those names sit between \(1570\) and \(1571\).
+\(H_0\cdot h=3.142\) is the first gap only --- one long step, coarser than the mean.
+
+Frozen scale \(j/H_0\) uses the first gap as a ruler.
+Snap scale is the hit index \(m\).
+They agree at \(m=1\).
+They part by one first-gap unit per short gap.
+At \(m=127\),
+\[
+m-\frac{j}{H_0}=0.01591343=\frac{25}{1571}.
+\]
+The frozen drift \emph{is} the short count over \(H_0\).
+
+\section{The heading ratchets and resets}
+
+On a long hit the heading is off the axis by about a kick, then two, then three, then four.
+On the next short hit it is put back.
+
+\begin{observation}
+On every short hit of the recorded run,
+\[
+\frac{|h_y|}{m}=\alpha,\qquad
+\alpha=3.15762023\times 10^{-6}.
+\]
+The same \(\alpha\), to the digits of the mean, from \(m=5\) to \(m=125\).
+\end{observation}
+
+Short hit: leftover proportional to how far the count has run.
+Long hits: ratchet off the wall.
+That is snap versus frozen in the heading, not as a speech.
+Snap to the event and the heading stays a horizon hit.
+Freeze the first gap and the heading walks off the axis until a short gap pays the accumulated leftover.
+
+\section{The pair}
+
+After the walk, bind a part and its inverse to the heading at hit \(m\):
+\[
+r=m,\qquad \frac1r=\frac1m.
+\]
+
+\begin{proposition}
+For every \(m\ge 1\),
+\[
+r\cdot\frac1r=1,\qquad
+\mathrm{GM}\Bigl(r,\tfrac1r\Bigr)=1.
+\]
+\end{proposition}
+
+\begin{proof}
+Immediate.
+\end{proof}
+
+The crossings table records \(\mathrm{gm}=1\) on every row, to machine precision.
+
+\begin{definition}[Leftover of the pair]
+\[
+\tau(m)=\mathrm{AM}-\mathrm{GM}
+=\frac{m+1/m}{2}-1.
+\]
+\end{definition}
+
+\begin{proposition}
+\(\tau(m)=0\) if and only if \(m=1\) (for \(m>0\)).
+\end{proposition}
+
+\begin{proof}
+\(m+1/m=2\) multiplies to \((m-1)^2=0\).
+\end{proof}
+
+\begin{proposition}
+\(\tau(m)=\tau(1/m)\) for every \(m>0\).
+\end{proposition}
+
+\begin{proof}
+Substitute.
+\end{proof}
+
+Hit \(1\): pair \((1,1)\), \(\tau=0\).
+The lock.
+The first horizon.
+
+Hit \(2\): pair \((2,1/2)\), \(\mathrm{AM}=5/4\), \(\tau=1/4\).
+Both horizons.
+The dated midpoint of Paper~I, now that both ends exist.
+
+The involution is \(m\leftrightarrow 1/m\).
+\texttt{EOP\_pairs\_minimal.csv} is that formula on each row.
+It is not a table of integer partners.
+The only integer partner in the count is \(m=1\) with itself.
+There is no \(4/k\).
+That \(4\) belonged to an earlier units choice \(r=m/2\), which moved the kiss to hit \(2\) and wrote \(\{2,1/2\}\) on hit \(1\).
+Same pairs, wrong clock.
+
+\section{Chord and path: two bands}
+
+Place the outward wall on the heading:
+\[
+P_m=m\,(h_x,h_y).
+\]
+The straight line from \(P_{m-1}\) to \(P_m\) is the leg chord.
+The summed displacement of \(P\) along the bound headings of that leg, radius linear from \(m-1\) to \(m\) in the leg's own gap, is the leg path.
+No kick is treated as an angle in that sum.
+
+\begin{proposition}
+If the heading at hit \(m-1\) is the opposite of the heading at hit \(m\), the chord is
+\[
+(m-1)+m=2m-1.
+\]
+\end{proposition}
+
+\begin{proof}
+Opposite unit headings \(u\) and \(-u\):
+\[
+\bigl|m(-u)-(m-1)u\bigr|=(m+m-1)|u|=2m-1.
+\]
+\end{proof}
+
+The table: \(m=2\) chord \(3.000000\); \(m=3\) chord \(5.000000\); \(m=4\) chord \(7.000000\).
+The short-gap rows miss \(2m-1\) by a few parts in \(10^{6}\), the same leftover that shows in \(h_y\).
+
+Chord over path does not climb to a last-row value of \(2/\pi\).
+It writes two bands.
+
+\begin{center}
+\begin{tabular}{@{}lccc@{}}
+\toprule
+ & last short & last long & \(2/\pi\) \\
+\midrule
+chord/path & \(0.63694134\) & \(0.63653616\) & \(0.63661977\) \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Short legs sit above the named comparison.
+Long legs sit below it.
+The last row of this run is a long hit, so the last chord/path \(0.636536\) is the lower band, not a leftover angle treated as a second constant.
+Mean of all legs after \(m=1\): \(0.636381\).
+
+The named comparison sits between the bands, as \(\pi/\operatorname{atan}(h)\) sits between the two gap integers.
+
+\section{The leftover integrated}
+
+From the kiss at \(m=1\) outward,
+\[
+\int_1^N\tau(k)\,dk
+=\frac{N^2-1}{4}+\frac12\ln N-(N-1).
+\]
+On the recorded run \(N=127\):
+\[
+\text{closed}=3908.422094.
+\]
+The sum of \(\tau(m)\) on the integer hits is \(3939.712667\).
+The trapezoid correction is
+\[
+\int\tau+\frac12\bigl(\tau(1)+\tau(N)\bigr)=3939.674062.
+\]
+Sum minus trapezoid: \(0.038605\).
+That difference is the next Euler--Maclaurin term on a function already named.
+It is not a third leftover.
+
+\section{What the three files hold}
+
+\subsection{\texttt{EOP\_summary\_minimal.csv}}
+
+Sheet: \(h\), leftover of one kick, heading chord, \(H_0\).
+Count: two gap integers, the word of longs and shorts, mean gap times kick.
+Heading: \(\alpha=|h_y|/m\) on short hits, frozen drift \(=n_{\mathrm{short}}/H_0\).
+Pair: kiss \((1,1)\) at \(m=1\), pair \((2,1/2)\) at \(m=2\).
+Bands: last short chord/path, last long chord/path.
+Wedge: sum, integral, trapezoid, their difference.
+Comparisons after the tables: \(\pi\), \(\pi/\operatorname{atan}(h)\), \(2/\pi\).
+
+\subsection{\texttt{EOP\_crossings\_minimal.csv}}
+
+One row per hit.
+Forced on every row: \(\mathrm{gm}=1\), \(r\cdot(1/r)=1\), \(\tau=(m+1/m)/2-1\), heading on a horizon.
+\texttt{gap\_kind} is \texttt{first}, \texttt{long}, or \texttt{short}.
+\texttt{hy\_over\_m} is constant on the short rows.
+
+\subsection{\texttt{EOP\_pairs\_minimal.csv}}
+
+The formula \(m\), \(m\), \(1/m\), AM, GM, \(\tau\).
+No empty partner columns.
+
+\section{What is not a reading of this walk}
+
+\(\Phi\) is not among the readings.
+Process~B remains a second street, walked after arrival, as in Paper~II.
+
+The period-\(5\) gap word on this sheet is the two-integer payment for \(\pi/\operatorname{atan}(h)\approx 1570.798\).
+It is not a docking with Paper~III.
+
+An unequal mix \((x-ay,\,y+bx)\) still closes, but mean times kick tracks \(\pi h/\sqrt{ab}\), not the square-mix reading.
+A one-sided mix from this station does not close.
+The equal opposite shear is a choice of kind.
+It is Euclid's \(90^\circ\) in the operator.
+It is not \(\pi\) in the operator.
+
+\section{What stands}
+
+The operators produce a heading that counts crossings of the diameter it stood on.
+
+The count is two neighboring integers.
+Mean gap times kick sits between them.
+
+The heading ratchets off the wall on long gaps and is reset on short gaps to \(|h_y|=m\alpha\).
+
+Scale is the hit index.
+The pair at that scale has product \(1\) and leftover \((m+1/m)/2-1\), zero only at \(1\).
+At two hits the pair is \(\{2,1/2\}\).
+The unit heading already had wall chords of length \(2\).
+
+Chord over the actual path of the outward wall writes two bands.
+The named comparison \(2/\pi\) sits between them.
+
+Named after the measure, not before it, and not as a last-row equality:
+mean gap times kick; wall chord \(2\); two bands around \(2/\pi\).
+None of those names enters \(T_h\) or \(N\).
+
+What is not granted: a last decimal as closure of the heading; a completed run of the count; \(\Phi\) as an output of this walk; a leftover of the pair treated as a capacity or a field; the extra \(2\) in an older radius \(m/2\); a partner table built by rounding \(4/k\).
+
+The first sentence of Paper~I is still the sentence.
+The kernel is how the walk answers it.
+
+\end{document}

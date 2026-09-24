@@ -1,0 +1,15 @@
+key,value
+h,0.002
+steps,200000
+n_hits,127
+H0,1571
+gap_min,1570
+gap_max,1571
+mean_gap,1570.8031496062993
+mean_gap_times_h,3.1416062992125986
+lambda_pi_over_atan_h,1570.798421187765
+lambda_frac,0.7984211877649159
+tau_sum,3939.7126672962945
+wedge_closed,3908.4220935432295
+wedge_trapezoid,3939.6740620471664
+tau_sum_minus_trapezoid,0.03860524912806795

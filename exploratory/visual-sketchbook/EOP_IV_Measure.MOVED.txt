@@ -1,0 +1,2 @@
+Moved to measures/already-there/already_there_measure.py
+This folder keeps EOP_IV_Drawings.py (plates Z1 Z2 G1 SB1 CS1) until the drawing passes.

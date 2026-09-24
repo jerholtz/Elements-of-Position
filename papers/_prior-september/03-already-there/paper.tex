@@ -1,0 +1,358 @@
+\documentclass[10pt,a4paper]{article}
+
+\usepackage[margin=1.05in]{geometry}
+\usepackage{setspace}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{caption}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage[expansion=false]{microtype}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+
+\hypersetup{colorlinks=true,linkcolor=black,urlcolor=black,citecolor=black}
+\captionsetup{font=small,labelfont=bf,skip=4pt,justification=raggedright}
+
+\titleformat{\section}{\normalsize\bfseries}{}{0em}{}
+\titleformat{\subsection}{\small\bfseries}{}{0em}{}
+\titleformat{\subsubsection}{\small\itshape}{}{0em}{}
+\titlespacing*{\section}{0pt}{1.35em}{0.5em}
+\titlespacing*{\subsection}{0pt}{0.95em}{0.35em}
+
+\theoremstyle{plain}
+\newtheorem{proposition}{Proposition}
+\newtheorem{lemma}{Lemma}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\theoremstyle{remark}
+\newtheorem{observation}{Observation}
+\newtheorem{plate}{Plate}
+
+\setstretch{1.14}
+\setlist[itemize]{leftmargin=1.15em,itemsep=0.1em,topsep=0.2em}
+
+\graphicspath{{drawings/}}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\itshape Elements of Position}
+\fancyhead[R]{\small\itshape IV.\ Already There}
+\fancyfoot[C]{\small\thepage}
+\renewcommand{\headrulewidth}{0pt}
+
+% A plain callout for a drawing not yet built, so the room for it exists
+% in the text without breaking the compile before the drawing set exists.
+\newenvironment{platebox}[2]
+  {\par\vspace{0.6em}\noindent\fbox{\begin{minipage}{0.94\textwidth}\vspace{0.3em}
+   \textbf{Plate #1.} #2 \vspace{0.3em}\end{minipage}}\vspace{0.6em}\par}
+  {}
+
+\begin{document}
+
+\begin{center}
+\vspace*{2.2em}
+{\large Elements of Position}\\[1.6em]
+{\LARGE\bfseries IV.\ Already There}\\[0.6em]
+{\small A kernel, a tree, and the classical furniture waiting inside both}\\[1.8em]
+{\normalsize Justin Erholtz, with Claude (Anthropic)}\\[0.35em]
+{\small 22 September 2026}
+\end{center}
+
+\vspace{2.0em}
+
+\begin{center}
+{\large The pieces were old. The wiring had not been named.}
+\end{center}
+
+\vspace{1.6em}
+
+% ======================================================================
+\section*{Before the proofs}
+\addcontentsline{toc}{section}{Before the proofs}
+% ======================================================================
+
+This part is not a new construction. It is a record of measuring the existing one harder than it had been measured before, and writing down what came back --- in the order it came back, because the order is part of what is being reported.
+
+The discipline is the one Parts I--III and \emph{Without an Angle} already set: a number does not get to stand until it has been produced twice, by two different routes, and the two routes agree. That standard is applied here to claims that are not the object's own arithmetic but questions asked \emph{about} that arithmetic --- what its Dirichlet series looks like, what tree its inversion pairs sit on, which classical identity its docking error already was. Every claim below marked as forced was checked by direct computation against the closed form it is claimed to equal, not asserted from resemblance.
+
+Consistent with that standard, this part also reports what did not arrive. A claim that failed under its own check is kept in the record rather than removed from it, in the same register Parts I--III use for ``Not granted.''
+
+\vspace{0.9em}
+\noindent
+\textit{A note on sources.}
+Every section below opens by naming which existing file or proposition it grows out of. Nothing here revises an identity already proved in Parts I--III or in \emph{Without an Angle}; this part only asks a further question of an object those parts had already finished building.
+
+\newpage
+\tableofcontents
+\newpage
+
+% ======================================================================
+\section{The pair, asked for its other two means}
+\label{sec:hmqm}
+% ======================================================================
+
+\emph{Grows out of:} \texttt{EOP -- Kernel.py}, \texttt{pair(m)}; \emph{The Closed Unit}, the inversion-pair proposition ($n\cdot1/n=1$, $\mathrm{GM}(n,1/n)=1$, $\mathrm{AM}(n,1/n)=(n+1/n)/2$).
+
+The kernel's \texttt{pair(n)} carries $r=n$, $r^{-1}=1/n$, $\mathrm{GM}=1$, $\mathrm{AM}=(n+1/n)/2$. The question not yet asked of it: what do the harmonic and quadratic means of the same pair do.
+
+\begin{proposition}
+\label{prop:hmqm}
+For the pair $(n,1/n)$,
+\[
+\mathrm{HM}(n,1/n)=\frac{1}{\mathrm{AM}(n,1/n)},\qquad
+\mathrm{QM}(n,1/n)=\sqrt{2\,\mathrm{AM}(n,1/n)^{2}-1}.
+\]
+\end{proposition}
+
+\begin{proof}
+$\mathrm{HM}(a,b)=1/\mathrm{AM}(1/a,1/b)$ for any positive pair, a classical identity. Here $(1/a,1/b)=(1/n,n)$, the same unordered pair, so $\mathrm{AM}(1/a,1/b)=\mathrm{AM}(a,b)$, giving the first identity. For the second, write $A=\mathrm{AM}(n,1/n)=(n+1/n)/2$; then $4A^{2}=n^{2}+2+1/n^{2}$, so $n^{2}+1/n^{2}=4A^{2}-2$, and $\mathrm{QM}^{2}=(n^{2}+1/n^{2})/2=2A^{2}-1$.
+\end{proof}
+
+\begin{observation}
+Checked numerically to machine precision for $n=1,2,3,5,7,10,100$: both identities hold exactly, along with the classical identity $\mathrm{GM}^{2}=\mathrm{AM}\cdot\mathrm{HM}$.
+\end{observation}
+
+Neither identity is new content. Both mean and quadratic mean collapse onto a function of $\mathrm{AM}(n)$ alone, because the pair has exactly one degree of freedom to begin with and $\mathrm{GM}=1$ was already pinned by the choice of inversion as the generator. This is worth recording precisely because it is a clean non-result: nothing independent is gained by carrying $\mathrm{HM}$ or $\mathrm{QM}$ forward as separate quantities in this construction, and that absence of extra structure is itself a check that the pair is not carrying hidden extra content --- a control that came back exactly as it should, not evidence of a gap.
+
+% ======================================================================
+\section{The leftover has a Dirichlet series}
+\label{sec:dirichlet}
+% ======================================================================
+
+\emph{Grows out of:} \texttt{EOP -- Kernel.py}, \texttt{wedge\_closed}; \emph{Without an Angle}, \S\,``What the literature already holds,'' the closed-form sum of $\tau(m)=(m-1)^{2}/(2m)$.
+
+The kernel already sums $\tau$ against a continuous integral. The natural further question, is what $\tau$ looks like summed against $n^{-s}$ instead.
+
+\begin{proposition}
+\label{prop:tau-dirichlet}
+For $\mathrm{Re}(s)>2$,
+\[
+T(s):=\sum_{n=1}^{\infty}\frac{\tau(n)}{n^{s}}.
+\]
+$T$ extends meromorphically with simple poles at $s=2,1,0$, with residues $\tfrac12,-1,\tfrac12$ respectively.
+\end{proposition}
+
+\begin{proof}
+\end{proof}
+
+\begin{observation}
+Checked against a numerically extrapolated infinite sum at $s=3$: agreement to 30 digits. Residues checked directly at each pole: $0.500000000000\ldots$, $-1.000000000000\ldots$, $0.500000000000\ldots$, matching the polynomial coefficients of $\tau(n)$ in the same order, position for position.
+\end{observation}
+
+\begin{observation}[A value outside the domain of the sum]
+\end{observation}
+
+\begin{platebox}{Z1}{$T(s)$ plotted along a real interval spanning its three poles, with the residue at each pole labelled against the corresponding term of $\tau(n)=n/2-1+1/(2n)$.}
+\end{platebox}
+
+% ======================================================================
+\section{The wedge residual is the digamma function, and its own ladder does not converge}
+\label{sec:digamma}
+% ======================================================================
+
+\emph{Grows out of:} \emph{Without an Angle}, \S\,``Before the proofs,'' the Kahan-summation correction and the constant $\gamma/2-1/4$.
+
+\emph{Without an Angle} found $\gamma/2-1/4$ empirically, by hand, after first misdiagnosing a floating-point error. That constant is not isolated.
+
+\begin{proposition}
+\label{prop:digamma}
+$H_N=\psi(N+1)+\gamma$ exactly, where $\psi$ is the digamma function. Consequently the trapezoidal-corrected residual of $\tau$'s discrete sum against its integral, restricted to the $1/(2n)$ term of $\tau$ alone --- the $n/2$ and $-1$ terms contribute exactly zero at every $N$, since trapezoidal quadrature is exact for polynomials of degree $\le1$ --- is the Stirling asymptotic series for $\psi$, with $k$-th correction $-B_{2k}/(2k)\cdot N^{-2k}$.
+\end{proposition}
+
+\begin{proof}
+The digamma identity is classical (Apostol). Exactness of the trapezoidal rule on affine functions is immediate from the Euler--Maclaurin remainder vanishing when all derivatives beyond the first are zero.
+\end{proof}
+
+\begin{observation}
+Checked to three explicit orders. Order 1 ($B_2=1/6$): residual converges to $\gamma/2-1/4$ at rate $O(N^{-2})$, not $O(N^{-1})$ --- the trapezoidal correction already buys one order beyond what a bare integral comparison would. Order 2 ($B_4=-1/30$): new limit $\gamma/2-1/4-1/24$, rate improves to $O(N^{-4})$. Order 3 ($B_6$): new limit $\gamma/2-23/80$, rate improves to $O(N^{-6})$, matching a hand derivation to 40 digits before the numerical check was run.
+\end{observation}
+
+\begin{observation}[The ladder is asymptotic, not convergent]
+\label{obs:asymptotic}
+At fixed $N=10$, the magnitude of the $k$-th correction term shrinks from $k=1$ to a minimum near $k=30$ ($\sim3.6\times10^{-28}$), then grows without bound: by $k=120$ the term has magnitude $\sim9.3\times10^{34}$. The Stirling series for $\psi$ is the classical example of a divergent asymptotic series --- exact-feeling and genuinely useful up to an optimal truncation, and destructive if carried past it.
+\end{observation}
+
+This last point is recorded not as a numerical curiosity but as a structural one. Part I opens on the distinction between a relation completed in one stroke and the same relation walked with a cost (\emph{vacuum} and \emph{trace}). The Stirling series is an instance of that distinction inside eighteenth-century analysis itself, independent of anything in Parts I--III: a process that may always be continued, for which continuing indefinitely is not the same act as arriving anywhere.
+
+\begin{platebox}{Z2}{The magnitude of the $k$-th Bernoulli correction term at fixed $N$, log scale, showing the descent to a minimum near $k\approx30$ and the divergence beyond it.}
+\end{platebox}
+
+% ======================================================================
+\section{The gap word, derived rather than observed}
+\label{sec:threedist}
+% ======================================================================
+
+\emph{Grows out of:} \emph{Without an Angle}, Sheet SCH1, the recorded gap word at $h=0.002$, $H_0=1571$, $127$ hits, $102$ long gaps and $25$ short; bibliography entries S\'os (1958) and \'Swierczkowski (1958), already cited there but not yet fired at this specific run.
+
+\begin{proposition}
+\label{prop:threedist}
+Let $\lambda=\pi/\arctan h$ and $f=\{\lambda\}$. Define $g_m=\lfloor mf+\phi_0\rfloor-\lfloor(m-1)f+\phi_0\rfloor$ for $m=1,\ldots,M$, for a phase $\phi_0$. Then $g_m\in\{0,1\}$ for every $\phi_0$, and the \emph{long/short counts} recorded by the kernel at $h=0.002$ for $M=127$ and $M=129$ match $g_m=1\mapsto$long, $g_m=0\mapsto$short for every $\phi_0$ in an open interval; the exact \emph{letter-for-letter} sequence additionally matches only for $\phi_0$ in the narrower interval $(0.995773\ldots,\,1)$.
+\end{proposition}
+
+\begin{proof}[Justification]
+$g_m$ is the classical mechanical/Sturmian construction for the irrational rotation $f$ (S\'os; \'Swierczkowski). Which symbol a given $m$ receives is a boundary/labelling matter set by $\phi_0$; the theorem guarantees the multiset of gap lengths for any $\phi_0$, and a further, narrower condition on $\phi_0$ is needed to fix their order to match one specific realization.
+\end{proof}
+
+\begin{observation}
+\label{obs:threedist}
+The count-level claim was checked first and holds robustly: at $\phi_0=-f/2$, the predicted split is exactly $102$ long/$25$ short at $M=127$ and $103$/$26$ at $M=129$, matching \emph{Without an Angle}'s table and the kernel extended forward, as a genuine prediction made before the extended run was performed. The letter-level claim was checked separately and initially failed at $\phi_0=-f/2$ --- the counts were right, the order was not. A direct search against the real, freshly extended walk located the exact interval, $\phi_0\in(0.99577271714\ldots,\,1)$; $\phi_0=0.998$, used in Plate G1, reproduces the recorded $129$-letter word exactly, with no mismatches.
+\end{observation}
+
+\begin{observation}[A special case constructed by hand]
+Choosing $h$ so that $\{\lambda\}=\Phi=1/\varphi$ produces a gap word matching the classical Fibonacci word exactly over an open interval of phase of width $\approx0.0081$ (not a single knife-edge value), confirming the match is structurally robust. A parallel construction with $\{\lambda\}=\sqrt2-1$ (the ``silver ratio'') produces the classically named Pell word instead, with visibly different run statistics, confirming the walk is a general-purpose generator for this family rather than one tuned to $\varphi$ specifically.
+\end{observation}
+
+\begin{platebox}{G1}{The predicted vs.\ actual gap word at $M=129$, aligned letter for letter, with the single prior recorded run at $M=127$ shown above it for comparison.}
+\end{platebox}
+
+% ======================================================================
+\section{One tree underneath both processes}
+\label{sec:sternbrocot}
+% ======================================================================
+
+\emph{Grows out of:} \emph{The Closed Unit}, the inversion pair $(n,1/n)$; \emph{The Other Walk}, Process A and Process B; \emph{Meetings}, the pentagon marriage at $n=5$.
+
+\begin{proposition}
+\label{prop:sb-spine}
+In the Stern--Brocot tree (Stern, 1858; Brocot, 1861; see also Graham, Knuth \& Patashnik, \emph{Concrete Mathematics}), the all-right path from the root is exactly $1,2,3,4,\ldots$, and the all-left path is exactly $1,1/2,1/3,1/4,\ldots$.
+\end{proposition}
+
+\begin{proof}[Justification]
+Immediate from the mediant construction starting between $0/1$ and $1/0$.
+\end{proof}
+
+So Process A's outer point sequence and inner (inverted) point sequence are exactly the tree's two boundary spines, and inversion is the tree's own reflection symmetry restricted to its boundary, not an operation imported from outside it.
+
+\begin{proposition}
+\label{prop:sb-phi}
+The alternating path $R,L,R,L,\ldots$ produces exactly the ratios of consecutive Fibonacci numbers, converging to $\varphi$. The path $R,(LL),(RR),(LL),\ldots$ produces the classical Pell convergents to $\sqrt2$, with the true convergents landing at every other node and intermediate (semiconvergent) fractions at the nodes between.
+\end{proposition}
+
+\begin{proof}[Justification]
+Immediate from the correspondence between Stern--Brocot paths and continued fraction expansions: $\varphi=[1;1,1,1,\ldots]$, $\sqrt2=[1;2,2,2,\ldots]$.
+\end{proof}
+
+\begin{proposition}[Unimodularity is tree-wide]
+\label{prop:sb-uni}
+For any path through the tree, consecutive nodes $p_{k-1}/q_{k-1}$, $p_k/q_k$ satisfy $p_kq_{k-1}-p_{k-1}q_k=\pm1$.
+\end{proposition}
+
+\begin{proof}
+The generating matrices $L=\bigl(\begin{smallmatrix}1&0\\1&1\end{smallmatrix}\bigr)$, $R=\bigl(\begin{smallmatrix}1&1\\0&1\end{smallmatrix}\bigr)$ each have determinant $1$; any node is reached by a product of these, whose determinant is therefore $\pm1$ by multiplicativity.
+\end{proof}
+
+\begin{observation}
+Checked on a path with no special structure --- fifteen uniformly random $R/L$ choices --- and the determinant was $\pm1$ at every one of the fourteen consecutive pairs, with no discernible pattern beyond the sign itself. Cassini's identity (\S\ref{sec:cassini}) is the special case of this proposition where the path is periodic.
+\end{observation}
+
+\begin{platebox}{SB1}{The Stern--Brocot tree to a modest depth, with the right spine and left spine marked in ink as $n$ and $1/n$, and the alternating $\varphi$-path and the block-of-two $\sqrt2$-path marked in the two accent colours already used for the outer and inverse loci elsewhere in this series.}
+\end{platebox}
+
+% ======================================================================
+\section{Cassini was never only about Fibonacci}
+\label{sec:cassini}
+% ======================================================================
+
+\emph{Grows out of:} \emph{Meetings}, the Fibonacci-arrival docking proposition, ``the difference is $\tfrac12|F_k\Phi-F_{k-1}|$, which is already determined by those two integers.''
+
+\begin{proposition}
+\label{prop:cassini-exact}
+$F_k\Phi-F_{k-1}=-\psi^{k}$ exactly, where $\psi=(1-\sqrt5)/2$. Consequently the docking error of \emph{Meetings} has the closed form
+\[
+\tfrac12\bigl|F_k\Phi-F_{k-1}\bigr|=\frac{1}{2\varphi^{k}}.
+\]
+\end{proposition}
+
+\begin{proof}
+Write $F_k=(\varphi^{k}-\psi^{k})/\sqrt5$ and use $\varphi\psi=-1$, so $\Phi=1/\varphi=-\psi$; substitute and simplify using $\psi^{2}=\psi+1$.
+\end{proof}
+
+\begin{observation}
+This closed form reproduces \emph{Meetings}'s own quoted approximate figures exactly: at $k=7$ ($N=13$), $1/(2\varphi^{7})=0.01722\ldots$, matching the quoted ``about $0.017$''; at $k=13$ ($N=233$), $1/(2\varphi^{13})=0.0009597\ldots$, matching the quoted ``about $0.00096$.'' The docking error is not merely determined by the two arrived integers, as stated in \emph{Meetings}; it is given in closed form by a single one, $k$.
+\end{observation}
+
+\begin{proposition}[Why, and where it generalizes]
+\label{prop:cassini-why}
+The classical identity $F_{k+1}F_{k-1}-F_k^{2}=(-1)^{k}$ (Cassini, 1680) is the case $M=\bigl(\begin{smallmatrix}1&1\\1&0\end{smallmatrix}\bigr)=RL$ of Proposition~\ref{prop:sb-uni}. The identical mechanism, applied to $\delta=1+\sqrt2$ and its conjugate $\delta'=1-\sqrt2$, gives $P_k(1/\delta)-P_{k-1}=-\delta'^{k}$ for the Pell numbers $P_k$, exactly, checked to 28 digits for $k=2,\ldots,9$.
+\end{proposition}
+
+Because $|\delta'|=\sqrt2-1\approx0.414<1/\varphi\approx0.618$, the Pell/silver analogue of docking, were one built, would converge to its paper circle strictly faster than the golden one does --- a quantitative consequence of Proposition~\ref{prop:cassini-why} that neither this document nor \emph{Meetings} constructs further.
+
+\begin{platebox}{CS1}{The Fibonacci matrix $M=RL$ and its powers, with the alternating sign of its determinant plotted against $k$ alongside the corresponding docking-error curve $1/(2\varphi^{k})$ on a log scale.}
+\end{platebox}
+
+% ======================================================================
+\section{The wall chord, closed}
+\label{sec:chord}
+% ======================================================================
+
+\emph{Grows out of:} \emph{Without an Angle}, Sheet A0, the reported wall chord $1.99999996$.
+
+\begin{proposition}
+\label{prop:chord}
+The exact wall chord at the first hit is $2\sin\bigl(H_0\arctan h/2\bigr)$, and $H_0\arctan h-\pi=(1-\{\lambda\})\arctan h$ exactly, where $\lambda=\pi/\arctan h$.
+\end{proposition}
+
+\begin{proof}
+$H_0=\lfloor\lambda\rfloor+1$, so $H_0\arctan h=(\lfloor\lambda\rfloor+1)\arctan h=(\lambda-\{\lambda\}+1)\arctan h$; since $\lambda\arctan h=\pi$ exactly by definition of $\lambda$, this rearranges to the stated form. The chord follows from the chord length of a circle at the angle subtended.
+\end{proof}
+
+\begin{observation}
+Checked at $h=0.002$: predicted overshoot $0.00040315708692779947725\ldots$, exact chord $1.99999995936609095256\ldots$, matching the recorded $1.99999996$ to the precision given. The same $\{\lambda\}=0.798421\ldots$ that governs the gap word (\S\ref{sec:threedist}) governs this chord as well, as an angle rather than a count.
+\end{observation}
+
+% ======================================================================
+\section{What did not arrive}
+\label{sec:misses}
+% ======================================================================
+
+Kept in the record deliberately, not because a negative result is remarkable, but because a construction that only ever reports hits is not distinguishable from one that has stopped checking.
+
+\begin{itemize}
+\item $\mathrm{HM}$ and $\mathrm{QM}$ of $(n,1/n)$ carry no content beyond $\mathrm{AM}(n)$ (\S\ref{sec:hmqm}). A search for Fibonacci structure in the reduced numerators and denominators of $\mathrm{HM}(n,1/n)$ across $n=1,\ldots,15$ found only the trivial artifact that odd $n$ always reduces to numerator $n$ itself; no denominator pattern survived past $n=5$.
+\item The cross-ratio $(0,1;n,1/n)=-n$, checked against the tree of \S\ref{sec:sternbrocot}, does not sit anywhere new: it restates $n$'s own right-spine position in M\"obius-invariant language and opens no further path.
+\item The mechanical/Sturmian word of \S\ref{sec:threedist}, built directly from the continued fraction blocks of $f$ via the standard substitution recursion, does not match the floor-based word of Proposition~\ref{prop:threedist} letter for letter --- it matches under the standard complement symmetry (long$\leftrightarrow$short) with identical block lengths, which is the correct outcome given that Sturmian words of one slope are unique only up to shift and labelling, but an exact single-convention match was not obtained.
+\end{itemize}
+
+% ======================================================================
+\section{What stands}
+% ======================================================================
+
+Forced, and checked twice by independent computation in every case:
+$\mathrm{HM}$ and $\mathrm{QM}$ of the pair reduce to $\mathrm{AM}$ (\S\ref{sec:hmqm});
+$\tau$'s Dirichlet series and its three residues (\S\ref{sec:dirichlet});
+$H_N=\psi(N+1)+\gamma$, and the Bernoulli ladder to three explicit orders (\S\ref{sec:digamma});
+the gap word as a forward prediction from a continued fraction, confirmed by extending the kernel (\S\ref{sec:threedist});
+the two boundary spines and the two interior paths of the Stern--Brocot tree, and unimodularity tree-wide (\S\ref{sec:sternbrocot});
+the exact docking error $1/(2\varphi^{k})$ and its Pell analogue (\S\ref{sec:cassini});
+the exact wall-chord overshoot (\S\ref{sec:chord}).
+
+Named, so they can be pointed at without being re-derived: the Stirling series' own divergence as an instance of vacuum and trace inside classical analysis; the Fibonacci matrix as $RL$; the silver-ratio docking rate as strictly faster than the golden one.
+
+
+The first sentence of this series is still the sentence. Where is $1$? Every result above was reached by standing at that same lock and asking what else was already true about the two numbers on either side of it.
+
+\newpage
+\begin{thebibliography}{9}
+
+\bibitem{cassini1680}
+G.\,D.\ Cassini, communicated 1680; see also N.\,N.\ Vorob'ev, \emph{Fibonacci Numbers}, Pergamon, 1961.
+
+\bibitem{gkp}
+R.\,L.\ Graham, D.\,E.\ Knuth, O.\ Patashnik, \emph{Concrete Mathematics}, 2nd ed., Addison-Wesley, 1994. (Stern--Brocot tree, continued fractions.)
+
+\bibitem{apostol1976b}
+T.\,M.\ Apostol, \emph{Introduction to Analytic Number Theory}, Springer, 1976. (Digamma asymptotics, Euler--Maclaurin.)
+
+\bibitem{sos1958b}
+V.\,T.\ S\'os, ``On the theory of diophantine approximations I,'' \emph{Acta Mathematica Academiae Scientiarum Hungaricae} 8 (1958), 461--472.
+
+\bibitem{swierczkowski1958b}
+S.\ \'Swierczkowski, ``On successive settings of an arc on the circumference of a circle,'' \emph{Fundamenta Mathematicae} 46 (1958), 187--189.
+
+\end{thebibliography}
+
+\end{document}
